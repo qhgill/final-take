@@ -16,7 +16,7 @@ const AnimateText = ({ text, typeSpeed }: AnimateTextProps) => {
       preRenderFirstString={false}
       repeat={0}
       speed={{ type: "keyStrokeDelayInMs", value: typeSpeed }}
-      className="inline-block font-mono"
+      className="inline-block font-mono text-2xl"
     />
   );
 };

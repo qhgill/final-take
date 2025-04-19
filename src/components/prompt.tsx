@@ -1,35 +1,33 @@
 import Image, { StaticImageData } from "next/image";
 import Option from "../utils/options";
+import AnimateText from "./AnimateText";
 
 interface PromptTypes {
-  day: string;
+  month: number;
   title: string;
   icon: StaticImageData;
   options: Option;
   description: string;
-  typespeed: number;
+  speed: number;
 }
 
-const prompt = ({
-  day,
+const Prompt = ({
+  month,
   title,
   icon,
   options,
   description,
-  typespeed,
+  speed,
 }: PromptTypes) => {
   return (
-    <div className="flex flex-col w-[70vw] max-h-[90vh] bg-gray-500">
-      <div>
-        <Image src={icon} alt="choice icon" />
-        {day}
-        {title}
-        {options.placeholder}
-        {description}
-        {typespeed}
-      </div>
+    <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center bg-gray-500">
+      <p className="text-4xl font-bold">MONTH: {month}</p>
+      <p className="text-6xl font-extrabold">{title}</p>
+      <AnimateText text={description} typeSpeed={speed} />
+      <Image src={icon} alt="choice icon" />
+      {options.placeholder}
     </div>
   );
 };
 
-export default prompt;
+export default Prompt;
