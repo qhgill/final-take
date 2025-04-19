@@ -1,5 +1,11 @@
+import AnimateText from "../components/AnimateText";
+
 const Home = () => {
-  return <>Hello World</>;
+  return (
+    <>
+      <AnimateText text={"Hello"} typeSpeed={99} />
+    </>
+  );
 };
 
 export default Home;
