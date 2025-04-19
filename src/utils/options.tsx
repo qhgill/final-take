@@ -1,4 +1,4 @@
-interface Option{
-    placeholder: string
+interface Option {
+  placeholder: string;
 }
 export default Option;
