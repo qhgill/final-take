@@ -37,9 +37,9 @@ const Home = () => {
 
     setTimeout(() => {
       setSelectedOption((prev) =>
-        prev.month === options[0].month ? options[1] : options[0]
+        prev.month === options[0].month ? options[1] : options[0],
       );
-      setPromptKey((prev) => prev + 1); 
+      setPromptKey((prev) => prev + 1);
       setVisible(true);
     }, 800);
   };
