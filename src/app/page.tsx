@@ -1,6 +1,7 @@
 import Prompt from "../components/Prompt";
 import placeholderimg from "@/public/placeholder.png";
 import Option from "../utils/options";
+import Question from "../components/Question";
 
 const option1: Option = {
   placeholder: "text",
