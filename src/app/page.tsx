@@ -61,12 +61,12 @@ const Home = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        {/* <button
+        <button
           onClick={handleSwap}
           className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
         >
           Switch Option
-        </button> */}
+        </button>
       </div>
     </div>
   );
