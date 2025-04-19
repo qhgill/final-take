@@ -8,7 +8,6 @@ const option1: Option = {
 };
 const Home = () => {
   return (
-
     <div className="w-screen max-h-screen flex items-center justify-center">
       <Question />
       <div className="flex items-center justify-center">
