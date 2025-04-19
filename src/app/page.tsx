@@ -1,4 +1,4 @@
-import AnimateText from "./components/AnimateText";
+import AnimateText from "../components/AnimateText";
 
 const Home = () => {
   return (
