@@ -15,8 +15,8 @@ import { MessageCircleQuestion } from "lucide-react";
 const Quesiton = () => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="cursor-pointer">
-        <MessageCircleQuestion />
+      <AlertDialogTrigger className="cursor-pointer text-black flex items-center justify-center py-10 hover:scale-110 duration-100">
+        <MessageCircleQuestion className="size-20" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

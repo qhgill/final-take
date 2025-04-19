@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Prompt from "../components/Prompt";
 import placeholderimg from "@/public/placeholder.png";
 import Option from "../utils/options";
-import Question from "../components/Question";
+import Sidebar from "../components/Sidebar";
 
 const options: Option[] = [
   {
@@ -45,9 +45,9 @@ const Home = () => {
   };
 
   return (
-    <div className="w-screen max-h-screen flex flex-col items-center justify-center gap-6">
-      <Question />
-      <div className="flex items-center justify-center gap-4 overflow-hidden">
+    <div className="w-screen relative h-screen max-h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
+      <Sidebar budget={1} sustainStatus={1} />
+      <div className="flex items-center justify-center">
         <AnimatePresence mode="wait">
           {visible && (
             <motion.div
@@ -61,12 +61,12 @@ const Home = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        <button
+        {/* <button
           onClick={handleSwap}
           className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
         >
           Switch Option
-        </button>
+        </button> */}
       </div>
     </div>
   );
