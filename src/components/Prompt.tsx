@@ -1,6 +1,7 @@
 import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
 import FrameCarousel from "./choicestyles/FrameCarousel";
+import CustomSlider from "../components/choicestyles/CustomSlider";
 
 interface PromptTypes {
   options: Option;
@@ -14,6 +15,7 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
+      <CustomSlider />
       <FrameCarousel choices={options.answers} handleSwap={handleSwap} />
       {options.placeholder}
 
