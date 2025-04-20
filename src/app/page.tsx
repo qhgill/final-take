@@ -49,8 +49,8 @@ const Home = () => {
     user.profit += profit;
 
     user.month += 1;
-    // if (currentEventDone - 2 >= productionOptions.length) {
-    if (currentEventDone + 2 >= 2) {
+    if (currentEventDone - 2 >= productionOptions.length) {
+      // if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
