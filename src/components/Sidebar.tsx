@@ -83,69 +83,132 @@ const Sidebar = ({
   const earthImage = getEarthImage(sustainStatus);
 
   return (
-    <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0 text-white">
-      <div className="flex flex-col gap-4">
-        <Image src={logo} alt="logo" className="object-contain size-25 mt-5" />
-        <Question />
-        <p className="text-start text-black text-5xl font-extrabold">
-          Budget
-          <br />
-        </p>
-        <p className="text-start text-white text-5xl">${formatPrice(budget)}</p>
+    <>
+      <div className="flex sm:hidden flex-col items-center justify-between h-screen max-h-screen w-full top-0 inxet-x-0 absolute">
+        <div className="pt-5 flex gap-x-7 justify-between items-end ">
+          <div className="flex flex-col justify-between items-center">
+            <p className="text-start text-3xl">${formatPrice(budget)}</p>
+            <p className="text-start text-2xl font-extrabold">Budget</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image
+              src={earthImage}
+              alt="Earth Status"
+              className=" object-contain size-15"
+            />
+            <p className="text-start text-2xl font-extrabold">Sustainability</p>
+          </div>
+          <Question />
+        </div>
+        <div className="flex flex-col">
+          <p className="text-center text-2xl font-extrabold">Favors</p>
+          <div className="flex items-center pb-5">
+            {[0, 1, 2].map((starIndex) => (
+              <Image
+                key={starIndex}
+                src={usedStars[starIndex] ? grayStar : yellowStar}
+                alt={usedStars[starIndex] ? "Used Star" : "Available Star"}
+                className={`size-20 duration-100 ${
+                  currentMonth <= 2 || usedStars[starIndex]
+                    ? "cursor-not-allowed opacity-50"
+                    : "hover:scale-80 cursor-pointer"
+                }`}
+                onClick={() => handleStarClick(starIndex)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <AlertDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Call in a Favor</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to call in a favor?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={handleCloseModal}>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction onClick={handleFavor}>
+                Call in Favor
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
-      <br />
-      <div>
-        <p className="text-start text-black text-5xl font-extrabold gap-4">
-          Sustainability
-        </p>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          style={{ originX: 0.5, originY: 0.5 }}
-          className="flex justify-center items-center mr-20"
-        >
+
+      <div className="hidden sm:flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
+        <div className="flex flex-col gap-4">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            style={{ originX: 0.5, originY: 0.5 }}
+            className="flex justify-center items-center mr-20"
+          >
+            <Image
+              src={earthImage}
+              alt="Earth Status"
+              className="object-contain m-2 size-40"
+            />
+          </motion.div>
+          <Question />
+          <p className="text-start text-black text-5xl font-extrabold">
+            Budget
+          </p>
+          <p className="text-start text-white text-6xl">
+            ${formatPrice(budget)}
+          </p>
+        </div>
+        <div>
+          <p className="text-start text-5xl text-black font-extrabold gap-4">
+            Sustainability
+          </p>
           <Image
             src={earthImage}
             alt="Earth Status"
-            className="object-contain m-2 size-40"
+            className=" object-contain size-40"
           />
-        </motion.div>
-      </div>
+        </div>
 
-      <div className="flex flex-col  justify-start gap-y-5 py-10">
-        <p className="text-start text-5xl text-black font-extrabold">Favors</p>
-        {[0, 1, 2].map((starIndex) => (
-          <Image
-            key={starIndex}
-            src={usedStars[starIndex] ? grayStar : yellowStar}
-            alt={usedStars[starIndex] ? "Used Star" : "Available Star"}
-            className={`size-20 duration-100 ${
-              currentMonth <= 2 || usedStars[starIndex]
-                ? "cursor-not-allowed opacity-50"
-                : "hover:scale-80 cursor-pointer"
-            }`}
-            onClick={() => handleStarClick(starIndex)}
-          />
-        ))}
+        <div className="flex flex-col  justify-start gap-y-5 py-10">
+          <p className="text-start text-black text-5xl font-extrabold">
+            Favors
+          </p>
+          {[0, 1, 2].map((starIndex) => (
+            <Image
+              key={starIndex}
+              src={usedStars[starIndex] ? grayStar : yellowStar}
+              alt={usedStars[starIndex] ? "Used Star" : "Available Star"}
+              className={`size-20 duration-100 ${
+                currentMonth <= 2 || usedStars[starIndex]
+                  ? "cursor-not-allowed opacity-50"
+                  : "hover:scale-80 cursor-pointer"
+              }`}
+              onClick={() => handleStarClick(starIndex)}
+            />
+          ))}
+        </div>
+        <AlertDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Call in a Favor</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to call in a favor?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={handleCloseModal}>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction onClick={handleFavor}>
+                Call in Favor
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
-      <AlertDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Call in a Favor</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to call in a favor?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleCloseModal}>
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleFavor}>
-              Call in Favor
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </div>
+    </>
   );
 };
 

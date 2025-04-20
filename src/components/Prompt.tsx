@@ -47,12 +47,14 @@ const Prompt = ({
   const [localMovieName, setLocalMovieName] = useState("");
 
   return (
-    <div className="flex flex-col w-[70vw] max-h-[100vh] justify-center gap-y-10 items-center">
+    <div className="flex flex-col w-[70vw] max-h-[100vh] sm:max-h-screen justify-center gap-y-10 items-center">
       {month === 0 && <StartGame handleSwap={handleSwap} />}
       {month > 3 && (
         <>
-          <p className="text-5xl font-bold text-white">MONTH {month - 2}</p>
-          <p className="text-8xl font-extrabold">{options.title}</p>
+          <p className="text-2xl sm:text-5xl text-white font-bold">
+            MONTH: {month - 2}
+          </p>
+          <p className="text-3xl sm:text-8xl font-extrabold">{options.title}</p>
           <AnimateText text={options.description} typeSpeed={23} />
           {options.selectionView === 1 && (
             <TicketCarousel choices={options.answers} handleSwap={handleSwap} />
@@ -91,8 +93,10 @@ const Prompt = ({
       )}
       {month === 1 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-5xl font-bold text-white">MONTH {1}</p>
-          <p className="text-8xl font-extrabold">Select Movie Name</p>
+          <p className="text-3xl sm:text-5xl font-bold text-white">MONTH {1}</p>
+          <p className="text-3xl sm:text-8xl font-extrabold">
+            Select Movie Name
+          </p>
           <AnimateText
             text={
               "Hello! It's time to step into your role as Director for your movie! Please enter your movie name!"
@@ -102,7 +106,7 @@ const Prompt = ({
           <input
             type="text"
             placeholder="Enter your movie name"
-            className="border-4 px-4 py-2 rounded-lg w-full max-w-[400px] text-center text-3xl"
+            className="border-4 px-4 py-2 rounded-lg w-full max-w-[400px] text-center text-xl sm:text-3xl"
             onChange={(e) => {
               setLocalMovieName(e.target.value);
               setMovieName(e.target.value);
@@ -117,7 +121,7 @@ const Prompt = ({
               }
             }}
             disabled={localMovieName.trim() === ""}
-            className={`border px-4 py-2 rounded-lg transition text-2xl
+            className={`border px-4 py-2 rounded-lg transition text-lg sm:text-2xl
     ${
       localMovieName.trim() === ""
         ? "bg-gray-300 text-gray-500 cursor-not-allowed"
@@ -131,8 +135,8 @@ const Prompt = ({
 
       {month === 2 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-4xl font-bold text-white">MONTH {1}</p>
-          <p className="text-8xl font-extrabold">Select Budget</p>
+          <p className="text-3xl sm:text-4xl font-bold text-white">MONTH {1}</p>
+          <p className="text-5xl sm:text-8xl font-extrabold">Select Budget</p>
           <AnimateText
             text={
               "Each month, you'll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
@@ -145,7 +149,7 @@ const Prompt = ({
             onClick={() => {
               handleSwap(0, 0, 0);
             }}
-            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-2xl"
+            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-lg sm:text-2xl"
           >
             Finalize Budget
           </button>
@@ -154,8 +158,8 @@ const Prompt = ({
 
       {month === 3 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-4xl font-bold text-white">MONTH {1}</p>
-          <p className="text-8xl font-extrabold">Select Genre</p>
+          <p className="text-3xl sm:text-4xl font-bold text-white">MONTH {1}</p>
+          <p className="text-4xl sm:text-8xl font-extrabold">Select Genre</p>
           <AnimateText
             text={
               "Now that you have your budget, what kind of movie do you want to make?"
