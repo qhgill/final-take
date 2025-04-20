@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
-import placeholder from "@/public/placeholder.png";
 // import grayStar from "@/public/star/grayStar.png";
 import yellowStar from "@/public/star/yellowStar.png";
 import Question from "../components/Question";
