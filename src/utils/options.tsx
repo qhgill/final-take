@@ -5,7 +5,6 @@ interface Option {
   title: string;
   icon: StaticImageData;
   description: string;
-  speed: number;
   placeholder: string;
 }
 export default Option;
