@@ -1,6 +1,7 @@
 "use client";
 
 import { TypeAnimation } from "react-type-animation";
+import { useEffect, useState } from "react";
 
 interface AnimateTextProps {
   text: string;
@@ -8,16 +9,27 @@ interface AnimateTextProps {
 }
 
 const AnimateText = ({ text, typeSpeed }: AnimateTextProps) => {
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setKey((prev) => prev + 1);
+  }, [text]);
+
   return (
-    <TypeAnimation
-      sequence={[1000, text]}
-      wrapper="span"
-      cursor={false}
-      preRenderFirstString={false}
-      repeat={0}
-      speed={{ type: "keyStrokeDelayInMs", value: typeSpeed }}
-      className="inline-block font-mono text-2xl"
-    />
+    <div className="relative inline-block font-mono text-2xl">
+      <span className="invisible">{text}</span>
+      <span className="absolute top-0 left-0">
+        <TypeAnimation
+          key={key}
+          sequence={[500, text]}
+          wrapper="span"
+          cursor={false}
+          preRenderFirstString={false}
+          repeat={0}
+          speed={{ type: "keyStrokeDelayInMs", value: typeSpeed }}
+        />
+      </span>
+    </div>
   );
 };
 

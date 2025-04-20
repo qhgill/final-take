@@ -1,4 +1,28 @@
-interface Option {
+import { StaticImageData } from "next/image";
+
+export interface Option {
+  month: number;
+  title: string;
+  icon: StaticImageData;
+  description: string;
   placeholder: string;
 }
-export default Option;
+
+export interface User {
+  month: number;
+  budget: number;
+  sustStat: number;
+  profit: number;
+  production: Option[];
+  marketing: Option[];
+  used: Option[];
+}
+
+export interface Choice {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  sustain: number;
+  profit: number;
+}
