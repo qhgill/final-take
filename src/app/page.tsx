@@ -74,6 +74,7 @@ const Home = () => {
             budget={currentBudget}
             sustainStatus={user.sustStat}
             onBudgetChange={handleBudgetChange}
+            currentMonth={user.month}
           />
         )}
         {isEnd && (
