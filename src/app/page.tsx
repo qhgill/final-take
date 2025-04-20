@@ -31,10 +31,16 @@ const Home = () => {
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
   const [movieName, setMovieName] = useState("");
+  const [initialBudget, setInitialBudget] = useState(user.budget);
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
     user.budget = newBudget;
+    console.log(user.month);
+    if (user.month == 2) {
+      setInitialBudget(newBudget);
+      console.log("Initial Budget: ", initialBudget);
+    }
   };
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
@@ -49,7 +55,6 @@ const Home = () => {
 
     user.month += 1;
     if (currentEventDone - 2 >= productionOptions.length) {
-      // if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -79,17 +84,42 @@ const Home = () => {
         )}
         {isEnd && (
           <div className="">
-            <Image
-              src={curtain}
-              alt="curtain"
-              className="h-screen absolute left-0 top-0"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="h-screen absolute left-0 top-0"
+              />
+            </motion.div>
+
+            <EndGame
+              movieName={movieName}
+              budget={user.budget}
+              sustainStatus={user.sustStat}
+              profit={user.profit}
+              initialBudget={initialBudget}
             />
-            <EndGame movieName={movieName} />
-            <Image
-              src={curtain}
-              alt="curtain"
-              className="h-screen absolute right-0 top-0"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="h-screen absolute right-0 top-0"
+              />
+            </motion.div>
           </div>
         )}
 
