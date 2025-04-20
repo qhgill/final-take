@@ -7,18 +7,16 @@ export const productionOptions: Option[] = [
     title: "the best option",
     icon: placeholderimg,
     description: "yea what the title says",
-    speed: 20,
     placeholder: "placeholder",
   },
 ];
 
 export const marketingOptions: Option[] = [
   {
-    month: 1,
+    month: 2,
     title: "the best option",
     icon: placeholderimg,
     description: "yea what the title says",
-    speed: 20,
     placeholder: "placeholder",
   },
 ];
