@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Prompt from "../components/Prompt";
-import placeholderimg from "@/public/placeholder.png";
 import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
 import { marketingOptions } from "../data/options";
@@ -23,23 +22,25 @@ const user: User = {
   used: usedOptions,
 };
 
-const options: Option[] = [
-  {
-    title: "title",
-    icon: placeholderimg,
-    description: "i love cats",
-    placeholder: "meow",
-  },
-  {
-    title: "another title",
-    icon: placeholderimg,
-    description: "i love cats too",
-    placeholder: "purr",
-  },
-];
+// const options: Option[] = [
+//   {
+//     title: "title",
+//     icon: placeholderimg,
+//     description: "i love cats",
+//     placeholder: "meow",
+//   },
+//   {
+//     title: "another title",
+//     icon: placeholderimg,
+//     description: "i love cats too",
+//     placeholder: "purr",
+//   },
+// ];
 
 const Home = () => {
-  const [selectedOption, setSelectedOption] = useState<Option>(options[0]);
+  const [selectedOption, setSelectedOption] = useState<Option>(
+    productionOptions[0],
+  );
   const [currentEventDone, setCurrentEventDone] = useState(0);
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
@@ -51,14 +52,14 @@ const Home = () => {
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
     user.month += 1;
-    if (currentEventDone >= options.length - 1) {
+    if (currentEventDone >= productionOptions.length - 1) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
       return;
     }
 
-    setSelectedOption(options[currentEventDone]);
+    setSelectedOption(productionOptions[currentEventDone]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
