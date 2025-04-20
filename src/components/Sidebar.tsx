@@ -86,17 +86,25 @@ const Sidebar = ({
       <div className="flex flex-col gap-4">
         <Image src={logo} alt="logo" className="object-contain size-25 mt-5" />
         <Question />
-        <p className="text-start text-3xl">
+        <p className="text-start text-4xl font-extrabold">
           Budget
-          <br />${formatPrice(budget)}
-        </p>
-        <p className="text-start text-3xl">
-          Sustainability
           <br />
-          <Image src={earthImage} alt="Earth Status" className="size-25" />
         </p>
+        <p className="text-start text-6xl">${formatPrice(budget)}</p>
       </div>
+      <div>
+        <p className="text-start text-4xl font-extrabold gap-4">
+          Sustainability
+        </p>
+        <Image
+          src={earthImage}
+          alt="Earth Status"
+          className=" object-contain size-40"
+        />
+      </div>
+
       <div className="flex flex-col  justify-start gap-y-5 py-10">
+        <p className="text-start text-4xl font-extrabold">Favors</p>
         {[0, 1, 2].map((starIndex) => (
           <Image
             key={starIndex}

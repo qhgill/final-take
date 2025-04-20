@@ -1,11 +1,13 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
@@ -18,15 +20,27 @@ interface ChoiceTypes {
 }
 
 const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
   return (
     <div>
       <Carousel
         opts={{
           loop: false,
         }}
+        setApi={setApi}
         className="w-[40vw]"
       >
-        <CarouselContent className="h-[35vh]">
+        <CarouselContent className="h-[50vh]">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -36,7 +50,7 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-25 px-60 text-white">
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-45 px-50 text-white">
                   <p className="text-bold text-5xl">{slide.title}</p>
                   <p className="text-2xl">{slide.description}</p>
                   <p className="text-2xl">${formatPrice(slide.price)}</p>
@@ -50,9 +64,18 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="scale-300 cursor-pointer" />
+        <CarouselNext className="scale-300 cursor-pointer" />
       </Carousel>
+      <div className="flex justify-center space-x-4 py-4">
+        {choices.map((_, index) => (
+          <button
+            key={index}
+            className={`h-5 w-5 cursor-pointer rounded-full ${current === index ? "bg-gray-900" : "bg-gray-400"}`}
+            onClick={() => api?.scrollTo(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
