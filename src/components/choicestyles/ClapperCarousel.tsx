@@ -10,6 +10,7 @@ import {
 import { Choice } from "@//utils/options";
 import Image from "next/image";
 import clapperimg from "@/public/clapper.png";
+import { formatPrice } from "@//utils/options";
 
 interface ChoiceTypes {
   choices: Choice[];
@@ -38,7 +39,7 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
                 <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-25 px-60 text-white">
                   <p className="text-bold text-5xl">{slide.title}</p>
                   <p className="text-2xl">{slide.description}</p>
-                  <p className="text-2xl">${slide.price}</p>
+                  <p className="text-2xl">${formatPrice(slide.price)}</p>
                   <Image
                     src={clapperimg}
                     alt="ticket"

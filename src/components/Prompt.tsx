@@ -22,17 +22,17 @@ const clapperInitial = [
     id: 1,
     title: "Action / Sci-Fi s",
     description: "Explosive, thrilling, and full of big moments.",
-    price: 1,
-    sustain: 1,
-    profit: 1,
+    price: 0,
+    sustain: 0,
+    profit: 2000000,
   },
   {
     id: 2,
     title: "Drama / Comedy",
     description: "Emotional, relatable, and full of character.",
-    price: 1,
-    sustain: 1,
-    profit: 1,
+    price: 0,
+    sustain: 0,
+    profit: 1000000,
   },
 ];
 
@@ -144,15 +144,6 @@ const Prompt = ({
             typeSpeed={30}
           />
           <ClapperCarousel choices={clapperInitial} handleSwap={handleSwap} />
-
-          <button
-            onClick={() => {
-              handleSwap(0, 0, 0);
-            }}
-            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
-          >
-            Choose Genre
-          </button>
         </div>
       )}
     </div>

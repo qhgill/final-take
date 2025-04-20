@@ -9,6 +9,7 @@ import earth2Dull from "@/public/earth/earth2Dull.png";
 import earth3Gray from "@/public/earth/earth3Gray.png";
 import earth4Worried from "@/public/earth/earth4Worried.png";
 import earth5Sad from "@/public/earth/earth5Sad.png";
+import { formatPrice } from "@//utils/options";
 
 import {
   AlertDialog,
@@ -80,7 +81,7 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
         <Question />
         <p className="text-start text-3xl">
           Budget
-          <br />${budget}
+          <br />${formatPrice(budget)}
         </p>
         <p className="text-start text-3xl">
           Sustainability

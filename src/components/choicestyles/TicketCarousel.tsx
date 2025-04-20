@@ -10,6 +10,7 @@ import {
 import { Choice } from "@//utils/options";
 import Image from "next/image";
 import ticketimg from "@/public/ticket.png";
+import { formatPrice } from "@//utils/options";
 
 interface ChoiceTypes {
   choices: Choice[];
@@ -38,7 +39,9 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
                 <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-30">
                   <p className="text-bold text-5xl text-white">{slide.title}</p>
                   <p className="text-2xl text-white">{slide.description}</p>
-                  <p className="text-2xl text-white">${slide.price}</p>
+                  <p className="text-2xl text-white">
+                    {formatPrice(slide.price)}
+                  </p>
                   <Image
                     src={ticketimg}
                     alt="ticket"
