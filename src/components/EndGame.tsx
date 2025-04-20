@@ -57,8 +57,8 @@ const EndGame = ({
           width={800}
           height={300}
         />
-        <div className="absolute text-center">
-          <p className="text-2xl sm:text-5xl font-bold mb-4">
+        <div className="absolute flex flex-col items-center text-center">
+          <p className="text-2xl sm:text-5xl text-center font-bold mb-4 overflow-clip w-5/6 sm:w-1/2">
             Congratulations on {movieName}!
           </p>
           <p className="text-lg sm:text-4xl font-bold">
