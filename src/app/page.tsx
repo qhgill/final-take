@@ -49,7 +49,7 @@ const Home = () => {
       return;
     }
 
-    setSelectedOption(productionOptions[currentEventDone]);
+    setSelectedOption(productionOptions[user.month - 1]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };

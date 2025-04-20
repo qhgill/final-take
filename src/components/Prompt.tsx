@@ -1,7 +1,10 @@
 import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
-import { Choice } from "../utils/options";
+// import FrameCarousel from "./choicestyles/FrameCarousel";
+import CustomSlider from "../components/choicestyles/CustomSlider";
 import TicketSelect from "./choicestyles/TicketSelect";
+
+import { Choice } from "../utils/options";
 
 interface PromptTypes {
   options: Option;
@@ -34,6 +37,8 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
+      <CustomSlider />
+
       <TicketSelect choices={dummyset} handleSwap={handleSwap} />
 
       {options.selectionView != 1 && (
