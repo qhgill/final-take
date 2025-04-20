@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Prompt from "../components/Prompt";
 import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
 import { productionOptions } from "../data/options";
-import EndGame from "../components/EndGame";
 import Image from "next/image";
 import curtain from "@/public/curtain.png";
+import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
 const user: User = {
-  month: 1,
+  month: 0,
   budget: 2000000,
   sustStat: 100,
   profit: 100,
@@ -32,10 +31,16 @@ const Home = () => {
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
   const [movieName, setMovieName] = useState("");
+  const [initialBudget, setInitialBudget] = useState(user.budget);
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
     user.budget = newBudget;
+    console.log(user.month);
+    if (user.month == 2) {
+      setInitialBudget(newBudget);
+      console.log("Initial Budget: ", initialBudget);
+    }
   };
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
@@ -50,7 +55,6 @@ const Home = () => {
 
     user.month += 1;
     if (currentEventDone - 2 >= productionOptions.length) {
-      // if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -61,6 +65,7 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
+
   const handleBudgetChange = (newBudget: number) => {
     setCurrentBudget(newBudget);
     user.budget = newBudget;
@@ -69,7 +74,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-screen relative h-screen flex flex-col sm:flex-row items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
-        {!isEnd && (
+        {!isEnd && user.month != 0 && (
           <Sidebar
             budget={currentBudget}
             sustainStatus={user.sustStat}
@@ -79,17 +84,42 @@ const Home = () => {
         )}
         {isEnd && (
           <div className="">
-            <Image
-              src={curtain}
-              alt="curtain"
-              className="hidden sm:flex h-screen absolute left-0 top-0"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="hidden sm:flex h-screen absolute left-0 top-0"
+              />
+            </motion.div>
+
+            <EndGame
+              movieName={movieName}
+              budget={user.budget}
+              sustainStatus={user.sustStat}
+              profit={user.profit}
+              initialBudget={initialBudget}
             />
-            <EndGame movieName={movieName} />
-            <Image
-              src={curtain}
-              alt="curtain"
-              className="hidden sm:flex h-screen absolute right-0 top-0"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="hidden sm:flex h-screen absolute right-0 top-0"
+              />
+            </motion.div>
           </div>
         )}
 
