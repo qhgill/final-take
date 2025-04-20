@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import logo from "../../public/logo.png";
 import placeholder from "../../public/placeholder.png";
 import Question from "../components/Question";
 
@@ -12,18 +13,14 @@ const Sidebar = ({ budget, sustainStatus }: SidebarTypes) => {
   return (
     <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
       <div className="flex flex-col gap-4">
-        <Image
-          src={placeholder}
-          alt="logo"
-          className="aspect-square object-fill size-40 mt-5"
-        />
+        <Image src={logo} alt="logo" className="object-contain size-25 mt-5" />
         <Question />
         <p className="text-start text-3xl">
-          budget
+          Budget
           <br />${budget}
         </p>
         <p className="text-start text-3xl">
-          sustain:
+          Sustainability
           <br />
           {sustainStatus}
         </p>
