@@ -23,7 +23,7 @@ const CustomSlider = ({ updateBudget }: SliderProps) => {
         valueLabelDisplay="auto"
         shiftStep={30}
         step={500000}
-        min={1000000}
+        min={2000000}
         max={20000000}
         valueLabelFormat={(value) => `${value / 1000000}M`}
         sx={{
