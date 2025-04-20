@@ -4,7 +4,7 @@ export const productionOptions: Option[] = [
   {
     title: "the best option",
     description: "yea what the title says",
-    selectionView: 1,
+    selectionView: 6,
     answers: [
       {
         id: 1,
@@ -18,14 +18,6 @@ export const productionOptions: Option[] = [
         id: 2,
         title: "title2",
         description: "also the best choice",
-        price: 11,
-        sustain: 11,
-        profit: 1,
-      },
-      {
-        id: 3,
-        title: "title3",
-        description: "an even better choice",
         price: 11,
         sustain: 11,
         profit: 1,
