@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import placeholder from "@/public/placeholder.png";
-import grayStar from "@/public/star/grayStar.png";
+// import grayStar from "@/public/star/grayStar.png";
 import yellowStar from "@/public/star/yellowStar.png";
 import Question from "../components/Question";
 import {
@@ -13,7 +13,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 interface SidebarTypes {
