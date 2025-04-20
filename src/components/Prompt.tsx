@@ -1,10 +1,38 @@
-import Image from "next/image";
 import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
+import TicketCarousel from "./choicestyles/TicketCarousel";
+import { Choice } from "../utils/options";
 
 interface PromptTypes {
   options: Option;
 }
+
+const dummyset: Choice[] = [
+  {
+    id: 1,
+    title: "title1",
+    description: "the best choice",
+    price: 1,
+    sustain: 1,
+    profit: 1,
+  },
+  {
+    id: 2,
+    title: "title2",
+    description: "also the best choice",
+    price: 1,
+    sustain: 1,
+    profit: 1,
+  },
+  {
+    id: 3,
+    title: "title3",
+    description: "an even better choice",
+    price: 1,
+    sustain: 1,
+    profit: 1,
+  },
+];
 
 const Prompt = ({ options }: PromptTypes) => {
   return (
@@ -12,7 +40,7 @@ const Prompt = ({ options }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {options.month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
-      <Image src={options.icon} alt="choice icon" />
+      <TicketCarousel choices={dummyset} />
       {options.placeholder}
     </div>
   );

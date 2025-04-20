@@ -17,3 +17,12 @@ export interface User {
   marketing: Option[];
   used: Option[];
 }
+
+export interface Choice {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  sustain: number;
+  profit: number;
+}
