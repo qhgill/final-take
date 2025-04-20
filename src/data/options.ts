@@ -11,7 +11,7 @@ export const productionOptions: Option[] = [
         title: "title1",
         description: "the best choice",
         price: 11,
-        sustain: 11,
+        sustain: 30,
         profit: 1,
       },
       {

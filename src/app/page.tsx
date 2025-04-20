@@ -12,7 +12,7 @@ import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
-const initialUser: User = {
+const user: User = {
   month: 1,
   budget: 2000000,
   sustStat: 100,
@@ -30,7 +30,6 @@ const Home = () => {
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
-  const [user, setUser] = useState<User>(initialUser);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
 
   const updateBudget = (newBudget: number) => {
@@ -41,16 +40,16 @@ const Home = () => {
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
-    setUser((prevUser) => ({
-      ...prevUser,
-      budget: prevUser.budget - price,
-      sustStat: prevUser.sustStat - sustain,
-      profit: prevUser.profit + profit,
-      month: prevUser.month + 1,
-    }));
+    setCurrentBudget((prevBudget) => prevBudget - price);
+    user.budget -= price;
+    user.sustStat -= sustain;
+    user.profit += profit;
 
     console.log("Current Budget:", currentBudget);
+
+    // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
+    user.month += 1;
     if (currentEventDone >= productionOptions.length - 1) {
       setIsEnd(true);
       setVisible(true);
@@ -62,29 +61,18 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
-
   const handleBudgetChange = (newBudget: number) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      budget: newBudget,
-    }));
-  };
-
-  const handleSustainChange = (newSustain: number) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      sustStat: newSustain,
-    }));
+    setCurrentBudget(newBudget);
+    user.budget = newBudget;
   };
 
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
         <Sidebar
-          budget={user.budget}
+          budget={currentBudget}
           sustainStatus={user.sustStat}
           onBudgetChange={handleBudgetChange}
-          onSustainChange={handleSustainChange}
         />
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">

@@ -25,15 +25,9 @@ interface SidebarTypes {
   budget: number;
   sustainStatus: number;
   onBudgetChange: (newBudget: number) => void;
-  onSustainChange: (newSustain: number) => void;
 }
 
-const Sidebar = ({
-  budget,
-  sustainStatus,
-  onBudgetChange,
-  onSustainChange,
-}: SidebarTypes) => {
+const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStar, setSelectedStar] = useState<number | null>(null);
   const [usedStars, setUsedStars] = useState<boolean[]>([false, false, false]);
@@ -79,11 +73,6 @@ const Sidebar = ({
 
   const earthImage = getEarthImage(sustainStatus);
 
-  // this is just to test the sustain change image thingy
-  const handleSustainTest = () => {
-    onSustainChange(sustainStatus - 20);
-  };
-
   return (
     <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
       <div className="flex flex-col gap-4">
@@ -98,14 +87,6 @@ const Sidebar = ({
           <br />
           <Image src={earthImage} alt="Earth Status" className="size-25" />
         </p>
-
-        {/* this is just to test the sustain change image thingy also */}
-        <button
-          onClick={handleSustainTest}
-          className="cursor-pointer bg-gray-200"
-        >
-          Test the Sustain it is -20 right now
-        </button>
       </div>
       <div className="flex flex-col  justify-start gap-y-5 py-10">
         {[0, 1, 2].map((starIndex) => (
