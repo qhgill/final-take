@@ -12,7 +12,7 @@ import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
-const user: User = {
+const initialUser: User = {
   month: 1,
   budget: 100,
   sustStat: 100,
@@ -30,15 +30,20 @@ const Home = () => {
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
-  const [currentBudget, setCurrentBudget] = useState(user.budget);
-  const [currentSustain, setCurrentSustain] = useState(user.sustStat);
+  const [user, setUser] = useState<User>(initialUser);
+  // const [currentBudget, setCurrentBudget] = useState(user.budget);
+  // const [currentSustain, setCurrentSustain] = useState(user.sustStat);
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
-    setCurrentBudget((prevBudget) => prevBudget - price);
-    setCurrentSustain((prevSustain) => prevSustain - sustain);
-    user.profit += profit;
+    setUser((prevUser) => ({
+      ...prevUser,
+      budget: prevUser.budget - price,
+      sustStat: prevUser.sustStat - sustain,
+      profit: prevUser.profit + profit,
+      month: prevUser.month + 1,
+    }));
 
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
@@ -55,19 +60,25 @@ const Home = () => {
     setVisible(true);
   };
   const handleBudgetChange = (newBudget: number) => {
-    setCurrentBudget(newBudget);
+    setUser((prevUser) => ({
+      ...prevUser,
+      budget: newBudget,
+    }));
   };
 
   const handleSustainChange = (newSustain: number) => {
-    setCurrentSustain(newSustain);
+    setUser((prevUser) => ({
+      ...prevUser,
+      sustStat: newSustain,
+    }));
   };
 
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
         <Sidebar
-          budget={currentBudget}
-          sustainStatus={currentSustain}
+          budget={user.budget}
+          sustainStatus={user.sustStat}
           onBudgetChange={handleBudgetChange}
           onSustainChange={handleSustainChange}
         />

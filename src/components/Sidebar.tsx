@@ -64,7 +64,7 @@ const Sidebar = ({
   };
 
   const getEarthImage = (sustainStatus: number) => {
-    if (sustainStatus >= 80) {
+    if (sustainStatus > 80) {
       return earth1Happy;
     } else if (sustainStatus >= 60) {
       return earth2Dull;
@@ -98,6 +98,7 @@ const Sidebar = ({
           <br />
           <Image src={earthImage} alt="Earth Status" className="size-25" />
         </p>
+
         {/* this is just to test the sustain change image thingy also */}
         <button
           onClick={handleSustainTest}
