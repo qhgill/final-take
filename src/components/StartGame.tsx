@@ -27,7 +27,7 @@ const StartGame = ({ handleSwap }: StartGameProps) => {
           alt="logo"
           className="justify-center items-center"
           width={450}
-          height={200}
+          height={450}
         />
         <button
           onClick={() => {
