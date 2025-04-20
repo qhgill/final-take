@@ -68,7 +68,7 @@ const EndGame = ({
             Sustainability: {sustainStatus}
           </p>
           <p className="text-lg sm:text-4xl font-bold">Profit: {profit}</p>
-          <p className="text-lg sm:text-4xl font-bold">
+          <p className="text-lg sm:text-4xl font-bold mb-4">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}
           </p>
