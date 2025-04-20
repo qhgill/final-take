@@ -1,12 +1,9 @@
 import { Option } from "../utils/options";
-import placeholderimg from "@/public/placeholder.png";
 
 export const productionOptions: Option[] = [
   {
     title: "the best option",
-    icon: placeholderimg,
     description: "yea what the title says",
-    placeholder: "placeholder",
     selectionView: 1,
     answers: [
       {
@@ -38,10 +35,8 @@ export const productionOptions: Option[] = [
 
   {
     title: "the best option",
-    icon: placeholderimg,
     description:
       "yea what the title says stanley lew is my one and only goat and i love him forever and ever and ever and ever and also divyank shah because they call him designer div",
-    placeholder: "placeholder",
     selectionView: 1,
     answers: [
       {
@@ -75,9 +70,7 @@ export const productionOptions: Option[] = [
 export const marketingOptions: Option[] = [
   {
     title: "the best option",
-    icon: placeholderimg,
     description: "yea what the title says",
-    placeholder: "placeholder",
     selectionView: 1,
     answers: [
       {

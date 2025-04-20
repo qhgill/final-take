@@ -1,13 +1,35 @@
 import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
-import FrameCarousel from "./choicestyles/FrameCarousel";
+// import FrameCarousel from "./choicestyles/FrameCarousel";
 import CustomSlider from "../components/choicestyles/CustomSlider";
+import TicketSelect from "./choicestyles/TicketSelect";
+
+import { Choice } from "../utils/options";
 
 interface PromptTypes {
   options: Option;
   month: number;
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
+
+const dummyset: Choice[] = [
+  {
+    id: 1,
+    title: "title1",
+    description: "the best choice",
+    price: 1,
+    sustain: 1,
+    profit: 1,
+  },
+  {
+    id: 2,
+    title: "title2",
+    description: "also the best choice",
+    price: 1,
+    sustain: 1,
+    profit: 1,
+  },
+];
 
 const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
   return (
@@ -16,8 +38,8 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
       <CustomSlider />
-      <FrameCarousel choices={options.answers} handleSwap={handleSwap} />
-      {options.placeholder}
+
+      <TicketSelect choices={dummyset} handleSwap={handleSwap} />
 
       {options.selectionView != 1 && (
         <button
