@@ -76,21 +76,18 @@ const Home = () => {
                   x: 300,
                   opacity: 0,
                   scale: 0.1,
-                  rotate: 45,
                   filter: "blur(5px)",
                 }}
                 animate={{
                   x: 0,
                   opacity: 1,
                   scale: 1,
-                  rotate: 0,
                   filter: "blur(0px)",
                 }}
                 exit={{
                   x: -300,
                   opacity: 0,
                   scale: 0.1,
-                  rotate: -45,
                   filter: "blur(5px)",
                 }}
                 transition={{
