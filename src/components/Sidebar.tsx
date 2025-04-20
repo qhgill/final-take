@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
-// import grayStar from "@/public/star/grayStar.png";
+import grayStar from "@/public/star/grayStar.png";
 import yellowStar from "@/public/star/yellowStar.png";
 import Question from "../components/Question";
+import earth1Happy from "@/public/earth/earth1Happy.png";
+import earth2Dull from "@/public/earth/earth2Dull.png";
+import earth3Gray from "@/public/earth/earth3Gray.png";
+import earth4Worried from "@/public/earth/earth4Worried.png";
+import earth5Sad from "@/public/earth/earth5Sad.png";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,10 +30,13 @@ interface SidebarTypes {
 const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStar, setSelectedStar] = useState<number | null>(null);
+  const [usedStars, setUsedStars] = useState<boolean[]>([false, false, false]);
 
   const handleStarClick = (starIndex: number) => {
-    setSelectedStar(starIndex);
-    setIsModalOpen(true);
+    if (!usedStars[starIndex]) {
+      setSelectedStar(starIndex);
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -37,9 +46,32 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
 
   const handleFavor = () => {
     console.log(`Favor called for star ${selectedStar}`);
-    onBudgetChange(budget + 50);
+    if (selectedStar !== null) {
+      onBudgetChange(budget + 50);
+      setUsedStars((prevUsedStars) => {
+        const newUsedStars = [...prevUsedStars];
+        newUsedStars[selectedStar] = true;
+        return newUsedStars;
+      });
+    }
     handleCloseModal();
   };
+
+  const getEarthImage = (sustainStatus: number) => {
+    if (sustainStatus > 80) {
+      return earth1Happy;
+    } else if (sustainStatus > 60) {
+      return earth2Dull;
+    } else if (sustainStatus > 40) {
+      return earth3Gray;
+    } else if (sustainStatus > 20) {
+      return earth4Worried;
+    } else {
+      return earth5Sad;
+    }
+  };
+
+  const earthImage = getEarthImage(sustainStatus);
 
   return (
     <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
@@ -53,15 +85,15 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
         <p className="text-start text-3xl">
           Sustainability
           <br />
-          {sustainStatus}
+          <Image src={earthImage} alt="Earth Status" className="size-25" />
         </p>
       </div>
       <div className="flex flex-col  justify-start gap-y-5 py-10">
         {[0, 1, 2].map((starIndex) => (
           <Image
             key={starIndex}
-            src={yellowStar}
-            alt="placeholder"
+            src={usedStars[starIndex] ? grayStar : yellowStar}
+            alt={usedStars[starIndex] ? "Used Star" : "Available Star"}
             className={`size-20 hover:scale-80 duration-100 cursor-pointer`}
             onClick={() => handleStarClick(starIndex)}
           />

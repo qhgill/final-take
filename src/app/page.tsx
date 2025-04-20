@@ -41,6 +41,7 @@ const Home = () => {
     setVisible(false);
 
     setCurrentBudget((prevBudget) => prevBudget - price);
+    user.budget -= price;
     user.sustStat -= sustain;
     user.profit += profit;
 
@@ -62,6 +63,7 @@ const Home = () => {
   };
   const handleBudgetChange = (newBudget: number) => {
     setCurrentBudget(newBudget);
+    user.budget = newBudget;
   };
 
   return (
