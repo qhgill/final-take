@@ -40,7 +40,7 @@ const FrameCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         setApi={setApi}
         className="w-[40vw]"
       >
-        <CarouselContent className="h-[30vh] basis-0.5">
+        <CarouselContent className="h-[35vh] basis-0.5">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
