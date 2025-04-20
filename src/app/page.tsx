@@ -31,6 +31,7 @@ const Home = () => {
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
+  const [movieName, setMovieName] = useState("");
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
@@ -45,8 +46,6 @@ const Home = () => {
     user.sustStat -= sustain;
     user.profit += profit;
 
-    console.log("Current Budget:", currentBudget);
-
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
     user.month += 1;
@@ -57,7 +56,7 @@ const Home = () => {
       return;
     }
 
-    setSelectedOption(productionOptions[user.month - 2]);
+    setSelectedOption(productionOptions[user.month - 4]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
@@ -103,13 +102,14 @@ const Home = () => {
                 }}
               >
                 {isEnd ? (
-                  <EndGame />
+                  <EndGame movieName={movieName} />
                 ) : (
                   <Prompt
                     options={selectedOption}
                     month={user.month}
                     handleSwap={handleSwap}
                     updateBudget={updateBudget}
+                    setMovieName={setMovieName}
                   />
                 )}
               </motion.div>
