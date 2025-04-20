@@ -9,7 +9,9 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
 [Deployment Link](https://qhgill.github.io/final-take/)
+
 [Devpost](https://devpost.com/software/the-final-take?ref_content=user-portfolio&ref_feature=in_progress)
+
 [Figma](https://www.figma.com/design/SwhvB05sxX9Obd8qbtN9iI/The-Final-Take?node-id=52-78&t=Hqlk7OC6PGqDdgE2-0)
 
 ## Node.js
