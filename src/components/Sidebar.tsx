@@ -9,6 +9,7 @@ import earth2Dull from "@/public/earth/earth2Dull.png";
 import earth3Gray from "@/public/earth/earth3Gray.png";
 import earth4Worried from "@/public/earth/earth4Worried.png";
 import earth5Sad from "@/public/earth/earth5Sad.png";
+import { formatPrice } from "@//utils/options";
 
 import {
   AlertDialog,
@@ -69,13 +70,6 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
     } else {
       return earth5Sad;
     }
-  };
-
-  const formatPrice = (num: number): string => {
-    if (num >= 1_000_000)
-      return `${(num / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
-    if (num >= 1_000) return `${(num / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
-    return num.toString();
   };
 
   const earthImage = getEarthImage(sustainStatus);

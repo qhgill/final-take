@@ -2,18 +2,12 @@
 import { Choice } from "@//utils/options";
 import Image from "next/image";
 import ticketimg from "@/public/ticket.png";
+import { formatPrice } from "@//utils/options";
 
 interface ChoiceTypes {
   choices: Choice[];
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
-
-const formatPrice = (num: number): string => {
-  if (num >= 1_000_000)
-    return `${(num / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
-  if (num >= 1_000) return `${(num / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
-  return num.toString();
-};
 
 const TicketSelect = ({ choices, handleSwap }: ChoiceTypes) => {
   return (
