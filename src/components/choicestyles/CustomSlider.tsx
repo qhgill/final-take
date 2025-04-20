@@ -3,11 +3,16 @@
 import { useState } from "react";
 import Slider from "@mui/material/Slider";
 
-const CustomSlider = () => {
+interface SliderProps {
+  updateBudget: (newBudget: number) => void;
+}
+
+const CustomSlider = ({ updateBudget }: SliderProps) => {
   const [value, setValue] = useState(2000000);
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
     setValue(typeof newValue === "number" ? newValue : newValue[0]);
+    updateBudget(typeof newValue === "number" ? newValue : newValue[0]);
   };
 
   return (
