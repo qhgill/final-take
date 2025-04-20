@@ -1,6 +1,7 @@
 "use client";
 
 import { TypeAnimation } from "react-type-animation";
+import { useEffect, useState } from "react";
 
 interface AnimateTextProps {
   text: string;
@@ -8,8 +9,15 @@ interface AnimateTextProps {
 }
 
 const AnimateText = ({ text, typeSpeed }: AnimateTextProps) => {
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setKey((prev) => prev + 1);
+  }, [text]);
+
   return (
     <TypeAnimation
+      key={key}
       sequence={[1000, text]}
       wrapper="span"
       cursor={false}
