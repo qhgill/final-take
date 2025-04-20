@@ -17,8 +17,8 @@ const CustomSlider = ({ updateBudget }: SliderProps) => {
 
   return (
     <div className="flex flex-col w-full px-4 max-w-2xl ">
-      <div className="text-xl sm:text-2xl items-center flex flex-row gap-5 text-[#D45555]">
-        <p>$2M</p>
+      <div className="text-xl sm:text-2xl items-center flex flex-row gap-5 text-[#BD4848]">
+        <p className="text-2xl sm:text-3xl">$2M</p>
         <Slider
           value={value}
           onChange={handleChange}
@@ -29,25 +29,21 @@ const CustomSlider = ({ updateBudget }: SliderProps) => {
           max={20000000}
           valueLabelFormat={(value) => `${value / 1000000}M`}
           sx={{
-            color: "#D45555",
+            color: "#BD4848",
             "& .MuiSlider-thumb": {
-              backgroundColor: "#D45555",
+              backgroundColor: "#BD4848",
             },
             "& .MuiSlider-track": {
-              backgroundColor: "#D45555",
+              backgroundColor: "#BD4848",
             },
             "& .MuiSlider-rail": {
               opacity: 0.3,
-              backgroundColor: "#D45555",
+              backgroundColor: "#BD4848",
             },
           }}
         />
-        <p>$20M</p>
+        <p className="text-3xl">$20M</p>
       </div>
-
-      <p className="mt-4 text-xl sm:text-2xl font-medium text-[#D45555]">
-        Current: ${(value / 1000000).toFixed(1)}M
-      </p>
     </div>
   );
 };

@@ -82,6 +82,39 @@ const Home = () => {
             currentMonth={user.month}
           />
         )}
+        {user.month == 0 && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="hidden md:flex h-screen absolute left-0 top-0"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0,
+                duration: 1,
+              }}
+            >
+              <Image
+                src={curtain}
+                alt="curtain"
+                className="hidden md:flex h-screen absolute right-0 top-0"
+              />
+            </motion.div>
+          </>
+        )}
         {isEnd && (
           <div className="">
             <motion.div
@@ -95,7 +128,7 @@ const Home = () => {
               <Image
                 src={curtain}
                 alt="curtain"
-                className="hidden sm:flex h-screen absolute left-0 top-0"
+                className="hidden lg:flex h-screen absolute left-0 top-0"
               />
             </motion.div>
 
@@ -117,7 +150,7 @@ const Home = () => {
               <Image
                 src={curtain}
                 alt="curtain"
-                className="hidden sm:flex h-screen absolute right-0 top-0"
+                className="hidden lg:flex h-screen absolute right-0 top-0"
               />
             </motion.div>
           </div>
