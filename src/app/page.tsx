@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 import { productionOptions } from "../data/options";
 import Image from "next/image";
 import curtain from "@/public/curtain.png";
+import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
@@ -29,7 +30,7 @@ const Home = () => {
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
-  const [setMovieName] = useState("");
+  const [movieName, setMovieName] = useState("");
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
@@ -47,8 +48,8 @@ const Home = () => {
     user.profit += profit;
 
     user.month += 1;
-    // if (currentEventDone - 2 >= productionOptions.length) {
-    if (currentEventDone + 2 >= 2) {
+    if (currentEventDone - 2 >= productionOptions.length) {
+      // if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -83,7 +84,7 @@ const Home = () => {
               alt="curtain"
               className="h-screen absolute left-0 top-0"
             />
-            {/* <StartGame/> */}
+            <EndGame movieName={movieName} />
             <Image
               src={curtain}
               alt="curtain"
