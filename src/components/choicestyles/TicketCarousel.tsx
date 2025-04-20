@@ -22,23 +22,24 @@ const TicketCarousel = ({ choices }: ChoiceTypes) => {
         opts={{
           loop: true,
         }}
-        className="w-[60vw] bg-none"
+        className="w-[50vw]"
       >
-        <CarouselContent className="bg-none">
+        <CarouselContent className="">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
               className="flex flex-col justify-center bg-none"
             >
-              <Card className="w-[50vw] bg-none">
-                <CardContent className="relative flex flex-col justify-center text-2xl font-bold bg-none">
+              <Card className="bg-transparent border-0 flex flex-col items-center justify-center">
+                <CardContent className="relative flex flex-col text-2xl font-bold bg-none">
                   <p>{slide.title}</p>
                   <p>{slide.description}</p>
                   <p>{slide.price}</p>
                   <Image
                     src={ticketimg}
                     alt="ticket"
-                    className="absolute inset-0 -z-1"
+                    objectFit="cover"
+                    className="absolute inset-0 -z-1 object-fill"
                   />
                 </CardContent>
               </Card>
