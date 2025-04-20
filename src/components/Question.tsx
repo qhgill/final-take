@@ -20,7 +20,12 @@ const Quesiton = () => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Directions</AlertDialogTitle>
-          <AlertDialogDescription>Words to write later!</AlertDialogDescription>
+          <AlertDialogDescription>
+            Make the best movie possible without going over your budget or
+            harming the planet. Balance your financial, environmental, and
+            creative choices in production to achieve box office success while
+            being environmentally sustainable!
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogAction className="cursor-pointer">
