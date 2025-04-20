@@ -1,7 +1,5 @@
 import { Option } from "../utils/options";
-
 import { useState } from "react";
-
 import AnimateText from "./AnimateText";
 import CustomSlider from "../components/choicestyles/CustomSlider";
 import TicketSelect from "./choicestyles/TicketSelect";
@@ -10,6 +8,7 @@ import FrameCarousel from "./choicestyles/FrameCarousel";
 import ClapperCarousel from "./choicestyles/ClapperCarousel";
 import BillboardCarousel from "./choicestyles/BillboardCarousel";
 import LightSelect from "./choicestyles/LightSelect";
+import StartGame from "./StartGame";
 
 interface PromptTypes {
   options: Option;
@@ -49,6 +48,7 @@ const Prompt = ({
 
   return (
     <div className="flex flex-col w-[70vw] max-h-[100vh] justify-center gap-y-10 items-center">
+      {month === 0 && <StartGame handleSwap={handleSwap} />}
       {month > 3 && (
         <>
           <p className="text-5xl font-bold">MONTH: {month - 2}</p>
@@ -94,7 +94,7 @@ const Prompt = ({
           <p className="text-4xl font-bold">MONTH: {1}</p>
           <AnimateText
             text={
-              "Hello! It’s time to step into your role as Director for your movie! Please enter your movie name!"
+              "Hello! It's time to step into your role as Director for your movie! Please enter your movie name!"
             }
             typeSpeed={23}
           />
@@ -133,7 +133,7 @@ const Prompt = ({
           <p className="text-4xl font-bold">MONTH: {1}</p>
           <AnimateText
             text={
-              "Each month, you’ll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
+              "Each month, you'll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
             }
             typeSpeed={23}
           />

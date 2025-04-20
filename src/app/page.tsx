@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Prompt from "../components/Prompt";
 import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
 import { productionOptions } from "../data/options";
-import EndGame from "../components/EndGame";
 import Image from "next/image";
 import curtain from "@/public/curtain.png";
+import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
 const user: User = {
-  month: 1,
+  month: 0,
   budget: 2000000,
   sustStat: 100,
   profit: 100,
@@ -49,8 +48,8 @@ const Home = () => {
     user.profit += profit;
 
     user.month += 1;
-    // if (currentEventDone - 2 >= productionOptions.length) {
-    if (currentEventDone + 2 >= 2) {
+    if (currentEventDone - 2 >= productionOptions.length) {
+      // if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -61,6 +60,7 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
+
   const handleBudgetChange = (newBudget: number) => {
     setCurrentBudget(newBudget);
     user.budget = newBudget;
@@ -69,7 +69,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
-        {!isEnd && (
+        {!isEnd && user.month != 0 && (
           <Sidebar
             budget={currentBudget}
             sustainStatus={user.sustStat}
