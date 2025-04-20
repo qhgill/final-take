@@ -29,7 +29,7 @@ const EndGame = ({
     budget: number,
     sustainStatus: number,
     profit: number,
-    initialBudget: number
+    initialBudget: number,
   ) => {
     const score = ((budget + profit) / initialBudget) * sustainStatus;
     return Math.round(score);
