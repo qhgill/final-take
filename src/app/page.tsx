@@ -14,7 +14,7 @@ const usedOptions: Option[] = [];
 
 const user: User = {
   month: 1,
-  budget: 100,
+  budget: 2000000,
   sustStat: 100,
   profit: 100,
   production: productionOptions,
@@ -32,12 +32,19 @@ const Home = () => {
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
 
+  const updateBudget = (newBudget: number) => {
+    setCurrentBudget(newBudget);
+    user.budget = newBudget;
+  };
+
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
     setCurrentBudget((prevBudget) => prevBudget - price);
     user.sustStat -= sustain;
     user.profit += profit;
+
+    console.log("Current Budget:", currentBudget);
 
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
@@ -49,7 +56,7 @@ const Home = () => {
       return;
     }
 
-    setSelectedOption(productionOptions[currentEventDone]);
+    setSelectedOption(productionOptions[user.month - 2]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
@@ -100,6 +107,7 @@ const Home = () => {
                     options={selectedOption}
                     month={user.month}
                     handleSwap={handleSwap}
+                    updateBudget={updateBudget}
                   />
                 )}
               </motion.div>
