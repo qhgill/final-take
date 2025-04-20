@@ -1,7 +1,6 @@
 import { StaticImageData } from "next/image";
 
 export interface Option {
-  month: number;
   title: string;
   icon: StaticImageData;
   description: string;

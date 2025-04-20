@@ -9,6 +9,7 @@ import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
 import { marketingOptions } from "../data/options";
 import { productionOptions } from "../data/options";
+import EndGame from "../components/EndGame";
 
 const usedOptions: Option[] = [];
 
@@ -24,14 +25,12 @@ const user: User = {
 
 const options: Option[] = [
   {
-    month: 1,
     title: "title",
     icon: placeholderimg,
     description: "i love cats",
     placeholder: "meow",
   },
   {
-    month: 2,
     title: "another title",
     icon: placeholderimg,
     description: "i love cats too",
@@ -41,16 +40,25 @@ const options: Option[] = [
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<Option>(options[0]);
+  const [currentEventDone, setCurrentEventDone] = useState(0);
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
 
   const handleSwap = () => {
     setVisible(false);
 
     // this needs to be changed to a random + uses month so is scuffed
-    setSelectedOption((prev) =>
-      prev.month === options[0].month ? options[1] : options[0],
-    );
+    setCurrentEventDone(currentEventDone + 1);
+    user.month += 1;
+    if (currentEventDone >= options.length - 1) {
+      setIsEnd(true);
+      setVisible(true);
+      setPromptKey((prev) => prev + 1);
+      return;
+    }
+
+    setSelectedOption(options[currentEventDone]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
@@ -90,17 +98,19 @@ const Home = () => {
                   ease: [0.25, 0.8, 0.55, 1],
                 }}
               >
-                <Prompt options={selectedOption} />
+                {isEnd ? (
+                  <EndGame />
+                ) : (
+                  <Prompt
+                    options={selectedOption}
+                    month={user.month}
+                    handleSwap={handleSwap}
+                  />
+                )}
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <button
-          onClick={handleSwap}
-          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
-        >
-          Switch Option
-        </button>
       </div>
     </div>
   );
