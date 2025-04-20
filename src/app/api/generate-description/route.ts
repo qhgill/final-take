@@ -1,7 +1,7 @@
 export async function POST(req: Request) {
   const { movieName, budget, sustainStatus, profit, genre } = await req.json();
 
-  const prompt = `Write a detailed, concise movie synopsis for a ${genre} film called "${movieName}" that was created with ${budget}. It has a sustainability score of ${sustainStatus} and gained ${profit} in profit at the box office. Word limit 100.`;
+  const prompt = `Write a detailed, concise movie synopsis for a ${genre} film called "${movieName}" that was created with ${budget}. It has a sustainability score of ${sustainStatus}. The lower the score, the less sustainable it is. It also gained ${profit} in profit at the box office. Word limit 100.`;
 
   const response = await fetch(
     "https://openrouter.ai/api/v1/chat/completions",
