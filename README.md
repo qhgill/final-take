@@ -23,12 +23,12 @@ Final Take runs on Node.js Version 20.10.0 and higher. Please ensure you have No
 This project is built using [Next.js](https://nextjs.org), a React framework. Next.js is automatically installed when you install all dependencies for this project.
 
 ## Environment Variables
- 
- The following environment variables are required and must be stored in an `.env` file:
- 
- ```env
+
+The following environment variables are required and must be stored in an `.env` file:
+
+```env
 OPENROUTER_API_KEY=
- ```
+```
 
 ## Commands
 
