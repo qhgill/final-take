@@ -43,9 +43,7 @@ const Home = () => {
       month: prevUser.month + 1,
     }));
 
-    // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
-    user.month += 1;
     if (currentEventDone >= productionOptions.length - 1) {
       setIsEnd(true);
       setVisible(true);
@@ -57,6 +55,7 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
+
   const handleBudgetChange = (newBudget: number) => {
     setUser((prevUser) => ({
       ...prevUser,
