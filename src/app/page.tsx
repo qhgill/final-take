@@ -22,20 +22,6 @@ const user: User = {
   used: usedOptions,
 };
 
-// const options: Option[] = [
-//   {
-//     title: "title",
-//     icon: placeholderimg,
-//     description: "i love cats",
-//     placeholder: "meow",
-//   },
-//   {
-//     title: "another title",
-//     icon: placeholderimg,
-//     description: "i love cats too",
-//     placeholder: "purr",
-//   },
-// ];
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<Option>(
