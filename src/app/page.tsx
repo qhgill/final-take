@@ -30,11 +30,12 @@ const Home = () => {
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
+  const [currentBudget, setCurrentBudget] = useState(user.budget);
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
-    user.budget -= price;
+    setCurrentBudget((prevBudget) => prevBudget - price);
     user.sustStat -= sustain;
     user.profit += profit;
 
@@ -52,11 +53,18 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
+  const handleBudgetChange = (newBudget: number) => {
+    setCurrentBudget(newBudget);
+  };
 
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
-        <Sidebar budget={user.budget} sustainStatus={user.sustStat} />
+        <Sidebar
+          budget={currentBudget}
+          sustainStatus={user.sustStat}
+          onBudgetChange={handleBudgetChange}
+        />
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
             {visible && (
