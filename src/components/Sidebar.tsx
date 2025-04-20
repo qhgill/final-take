@@ -10,6 +10,7 @@ import earth3Gray from "@/public/earth/earth3Gray.png";
 import earth4Worried from "@/public/earth/earth4Worried.png";
 import earth5Sad from "@/public/earth/earth5Sad.png";
 import { formatPrice } from "@//utils/options";
+import { motion } from "framer-motion";
 
 import {
   AlertDialog,
@@ -55,7 +56,7 @@ const Sidebar = ({
   const handleFavor = () => {
     console.log(`Favor called for star ${selectedStar}`);
     if (selectedStar !== null) {
-      onBudgetChange(budget + 50);
+      onBudgetChange(budget + 500000);
       setUsedStars((prevUsedStars) => {
         const newUsedStars = [...prevUsedStars];
         newUsedStars[selectedStar] = true;
@@ -82,29 +83,36 @@ const Sidebar = ({
   const earthImage = getEarthImage(sustainStatus);
 
   return (
-    <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
+    <div className="flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0 text-white">
       <div className="flex flex-col gap-4">
         <Image src={logo} alt="logo" className="object-contain size-25 mt-5" />
         <Question />
-        <p className="text-start text-4xl font-extrabold">
+        <p className="text-start text-black text-5xl font-extrabold">
           Budget
           <br />
         </p>
-        <p className="text-start text-6xl">${formatPrice(budget)}</p>
+        <p className="text-start text-white text-5xl">${formatPrice(budget)}</p>
       </div>
+      <br />
       <div>
-        <p className="text-start text-4xl font-extrabold gap-4">
+        <p className="text-start text-black text-5xl font-extrabold gap-4">
           Sustainability
         </p>
-        <Image
-          src={earthImage}
-          alt="Earth Status"
-          className=" object-contain size-40"
-        />
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          style={{ originX: 0.5, originY: 0.5 }}
+          className="flex justify-center items-center mr-20"
+        >
+          <Image
+            src={earthImage}
+            alt="Earth Status"
+            className="object-contain m-2 size-40"
+          />
+        </motion.div>
       </div>
 
       <div className="flex flex-col  justify-start gap-y-5 py-10">
-        <p className="text-start text-4xl font-extrabold">Favors</p>
+        <p className="text-start text-5xl text-black font-extrabold">Favors</p>
         {[0, 1, 2].map((starIndex) => (
           <Image
             key={starIndex}

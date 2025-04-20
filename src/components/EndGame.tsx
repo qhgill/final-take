@@ -61,9 +61,9 @@ const EndGame = ({
           <p className="text-5xl font-bold mb-4">
             Congratulations on {movieName}!
           </p>
-          <p className="text-4xl font-bold">Remaining Budget: {budget}!</p>
-          <p className="text-4xl font-bold">Sustainability: {sustainStatus}!</p>
-          <p className="text-4xl font-bold">Profit: {profit}!</p>
+          <p className="text-4xl font-bold">Remaining Budget: {budget}</p>
+          <p className="text-4xl font-bold">Sustainability: {sustainStatus}</p>
+          <p className="text-4xl font-bold">Profit: {profit}</p>
           <p className="text-4xl font-bold">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}!
@@ -72,7 +72,7 @@ const EndGame = ({
 
         <button
           onClick={handlePlayAgain}
-          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition mt-4"
+          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition mt-8 text-3xl"
         >
           Play Again
         </button>

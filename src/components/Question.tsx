@@ -11,24 +11,27 @@ import {
 
 import { FileQuestion } from "lucide-react";
 
-const Quesiton = () => {
+const Question = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <FileQuestion className="size-15 cursor-pointer text-black hover:scale-95 duration-100" />
+        <FileQuestion className="size-10 cursor-pointer text-white hover:scale-95 duration-100" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Directions</AlertDialogTitle>
+          <AlertDialogTitle>How to Play</AlertDialogTitle>
           <AlertDialogDescription>
             Make the best movie possible without going over your budget or
             harming the planet. Balance your financial, environmental, and
             creative choices in production to achieve box office success while
             being environmentally sustainable!
+            <br />
+            <br />
+            Hint: You get three favors to help increase your budget by 500K!
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction className="cursor-pointer">
+          <AlertDialogAction className="text-xl cursor-pointer">
             Close
           </AlertDialogAction>
         </AlertDialogFooter>
@@ -37,4 +40,4 @@ const Quesiton = () => {
   );
 };
 
-export default Quesiton;
+export default Question;

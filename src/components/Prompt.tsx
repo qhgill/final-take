@@ -51,7 +51,7 @@ const Prompt = ({
       {month === 0 && <StartGame handleSwap={handleSwap} />}
       {month > 3 && (
         <>
-          <p className="text-5xl font-bold">MONTH: {month - 2}</p>
+          <p className="text-5xl font-bold text-white">MONTH {month - 2}</p>
           <p className="text-8xl font-extrabold">{options.title}</p>
           <AnimateText text={options.description} typeSpeed={23} />
           {options.selectionView === 1 && (
@@ -91,7 +91,8 @@ const Prompt = ({
       )}
       {month === 1 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-4xl font-bold">MONTH: {1}</p>
+          <p className="text-5xl font-bold text-white">MONTH {1}</p>
+          <p className="text-8xl font-extrabold">Select Movie Name</p>
           <AnimateText
             text={
               "Hello! It's time to step into your role as Director for your movie! Please enter your movie name!"
@@ -130,7 +131,8 @@ const Prompt = ({
 
       {month === 2 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-4xl font-bold">MONTH: {1}</p>
+          <p className="text-4xl font-bold text-white">MONTH {1}</p>
+          <p className="text-8xl font-extrabold">Select Budget</p>
           <AnimateText
             text={
               "Each month, you'll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
@@ -152,7 +154,8 @@ const Prompt = ({
 
       {month === 3 && (
         <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-4xl font-bold">MONTH: {1}</p>
+          <p className="text-4xl font-bold text-white">MONTH {1}</p>
+          <p className="text-8xl font-extrabold">Select Genre</p>
           <AnimateText
             text={
               "Now that you have your budget, what kind of movie do you want to make?"
