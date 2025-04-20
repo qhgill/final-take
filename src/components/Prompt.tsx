@@ -5,6 +5,8 @@ import TicketSelect from "./choicestyles/TicketSelect";
 
 interface PromptTypes {
   options: Option;
+  month: number;
+  handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
 const dummyset: Choice[] = [
@@ -29,11 +31,20 @@ const dummyset: Choice[] = [
 const Prompt = ({ options }: PromptTypes) => {
   return (
     <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-      <p className="text-4xl font-bold">MONTH: {options.month}</p>
+      <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
       <TicketSelect choices={dummyset} />
       {options.placeholder}
+
+      {options.selectionView != 1 && (
+        <button
+          onClick={() => handleSwap}
+          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+        >
+          Switch Option
+        </button>
+      )}
     </div>
   );
 };

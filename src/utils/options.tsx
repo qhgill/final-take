@@ -1,11 +1,12 @@
 import { StaticImageData } from "next/image";
 
 export interface Option {
-  month: number;
   title: string;
   icon: StaticImageData;
   description: string;
   placeholder: string;
+  answers: Choice[];
+  selectionView: number; // 1 for carousel
 }
 
 export interface User {

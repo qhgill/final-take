@@ -9,14 +9,14 @@ import {
 } from "@/components/ui/carousel";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
-import ticketimg from "@/public/ticket.png";
+import clapperimg from "@/public/clapper.png";
 
 interface ChoiceTypes {
   choices: Choice[];
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
-const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
+const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   return (
     <div>
       <Carousel
@@ -25,7 +25,7 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         }}
         className="w-[40vw]"
       >
-        <CarouselContent className="h-[30vh]">
+        <CarouselContent className="h-[35vh]">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -35,12 +35,12 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-30">
-                  <p className="text-bold text-5xl text-white">{slide.title}</p>
-                  <p className="text-2xl text-white">{slide.description}</p>
-                  <p className="text-2xl text-white">${slide.price}</p>
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-25 px-60 text-white">
+                  <p className="text-bold text-5xl">{slide.title}</p>
+                  <p className="text-2xl">{slide.description}</p>
+                  <p className="text-2xl">${slide.price}</p>
                   <Image
-                    src={ticketimg}
+                    src={clapperimg}
                     alt="ticket"
                     className="absolute inset-0 -z-1 h-full w-full object-contain"
                   />
@@ -56,4 +56,4 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   );
 };
 
-export default TicketCarousel;
+export default ClapperCarousel;
