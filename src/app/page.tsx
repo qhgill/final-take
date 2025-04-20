@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
-        <Sidebar budget={1} sustainStatus={1} />
+        <Sidebar budget={user.budget} sustainStatus={user.sustStat} />
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
             {visible && (
