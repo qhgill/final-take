@@ -6,9 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Prompt from "../components/Prompt";
 import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
-import { marketingOptions } from "../data/options";
 import { productionOptions } from "../data/options";
 import EndGame from "../components/EndGame";
+import Image from "next/image";
+import curtain from "@/public/curtain.png";
 
 const usedOptions: Option[] = [];
 
@@ -18,7 +19,6 @@ const user: User = {
   sustStat: 100,
   profit: 100,
   production: productionOptions,
-  marketing: marketingOptions,
   used: usedOptions,
 };
 
@@ -41,14 +41,16 @@ const Home = () => {
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
+    setCurrentEventDone((prev) => prev + 1);
+
     setCurrentBudget((prevBudget) => prevBudget - price);
     user.budget -= price;
     user.sustStat -= sustain;
     user.profit += profit;
 
-    setCurrentEventDone(currentEventDone + 1);
     user.month += 1;
-    if (currentEventDone >= productionOptions.length) {
+    // if (currentEventDone - 2 >= productionOptions.length) {
+    if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -66,13 +68,31 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
-        <Sidebar
-          budget={currentBudget}
-          sustainStatus={user.sustStat}
-          onBudgetChange={handleBudgetChange}
-          currentMonth={user.month}
-        />
+      <div className="w-screen relative h-screen flex items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
+        {!isEnd && (
+          <Sidebar
+            budget={currentBudget}
+            sustainStatus={user.sustStat}
+            onBudgetChange={handleBudgetChange}
+            currentMonth={user.month}
+          />
+        )}
+        {isEnd && (
+          <div className="">
+            <Image
+              src={curtain}
+              alt="curtain"
+              className="h-screen absolute left-0 top-0"
+            />
+            <EndGame movieName={movieName} />
+            <Image
+              src={curtain}
+              alt="curtain"
+              className="h-screen absolute right-0 top-0"
+            />
+          </div>
+        )}
+
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
             {visible && (
@@ -101,9 +121,7 @@ const Home = () => {
                   ease: [0.25, 0.8, 0.55, 1],
                 }}
               >
-                {isEnd ? (
-                  <EndGame movieName={movieName} />
-                ) : (
+                {!isEnd && (
                   <Prompt
                     options={selectedOption}
                     month={user.month}

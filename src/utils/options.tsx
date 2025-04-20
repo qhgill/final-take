@@ -11,7 +11,6 @@ export interface User {
   sustStat: number;
   profit: number;
   production: Option[];
-  marketing: Option[];
   used: Option[];
 }
 
