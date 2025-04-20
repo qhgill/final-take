@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Option from "../utils/options";
+import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
 
 interface PromptTypes {

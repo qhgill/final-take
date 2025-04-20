@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-interface Option {
+export interface Option {
   month: number;
   title: string;
   icon: StaticImageData;
@@ -8,4 +8,13 @@ interface Option {
   speed: number;
   placeholder: string;
 }
-export default Option;
+
+export interface User {
+  month: number;
+  budget: number;
+  sustStat: number;
+  profit: number;
+  production: Option[];
+  marketing: Option[];
+  used: Option[];
+}
