@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
-import ticketimg from "@/public/ticket.png";
+import billboardimg from "@/public/marquee.png";
 import { formatPrice } from "@//utils/options";
 
 interface ChoiceTypes {
@@ -19,7 +19,7 @@ interface ChoiceTypes {
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
-const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
+const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -40,7 +40,7 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         setApi={setApi}
         className="w-[70vw] sm:w-[40vw]"
       >
-        <CarouselContent className="h-[20vh] sm:h-[30vh] basis-0.5">
+        <CarouselContent className="flex h-[25vh] sm:h-[35vh] basis-0.5">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -50,18 +50,16 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full sm:pr-0 pr-14 h-full py-8 sm:py-15 sm:pl-0 pl-4 sm:px-30">
-                  <p className="text-bold text-xl sm:text-5xl text-white">
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-10 sm:px-55 text-black">
+                  <p className="text-bold text-2xl sm:text-5xl">
                     {slide.title}
                   </p>
-                  <p className="text-sm sm:text-2xl text-white">
-                    {slide.description}
-                  </p>
-                  <p className="text-sm sm:text-2xl text-white">
-                    {formatPrice(slide.price)}
+                  <p className="text-base sm:text-2xl">{slide.description}</p>
+                  <p className="text-base sm:text-2xl">
+                    ${formatPrice(slide.price)}
                   </p>
                   <Image
-                    src={ticketimg}
+                    src={billboardimg}
                     alt="ticket"
                     className="absolute inset-0 -z-1 h-full w-full object-contain"
                   />
@@ -77,7 +75,7 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         {choices.map((_, index) => (
           <button
             key={index}
-            className={`h-5 w-5 rounded-full cursor-pointer ${current === index ? "bg-black" : "bg-white"}`}
+            className={`h-5 w-5  cursor-pointer rounded-full ${current === index ? "bg-black" : "bg-white"}`}
             onClick={() => api?.scrollTo(index)}
           />
         ))}
@@ -86,4 +84,4 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   );
 };
 
-export default TicketCarousel;
+export default BillboardCarousel;

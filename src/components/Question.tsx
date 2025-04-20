@@ -1,7 +1,6 @@
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -10,25 +9,30 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { MessageCircleQuestion } from "lucide-react";
+import { FileQuestion } from "lucide-react";
 
-const Quesiton = () => {
+const Question = () => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="cursor-pointer text-black flex items-center justify-center py-10 hover:scale-110 duration-100">
-        <MessageCircleQuestion className="size-20" />
+      <AlertDialogTrigger>
+        <FileQuestion className="size-10 cursor-pointer text-white hover:scale-95 duration-100" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Directions</AlertDialogTitle>
-          <AlertDialogDescription>Words to write later!</AlertDialogDescription>
+          <AlertDialogTitle>How to Play</AlertDialogTitle>
+          <AlertDialogDescription>
+            Make the best movie possible without going over your budget or
+            harming the planet. Balance your financial, environmental, and
+            creative choices in production to achieve box office success while
+            being environmentally sustainable!
+            <br />
+            <br />
+            Hint: You get three favors to help increase your budget by 500K!
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="cursor-pointer">
-            Cancel
-          </AlertDialogCancel>
-          <AlertDialogAction className="cursor-pointer">
-            Continue
+          <AlertDialogAction className="text-xl cursor-pointer">
+            Close
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -36,4 +40,4 @@ const Quesiton = () => {
   );
 };
 
-export default Quesiton;
+export default Question;
