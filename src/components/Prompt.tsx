@@ -34,8 +34,7 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
-      <TicketSelect choices={dummyset} />
-      {options.placeholder}
+      <TicketSelect choices={dummyset} handleSwap={handleSwap} />
 
       {options.selectionView != 1 && (
         <button

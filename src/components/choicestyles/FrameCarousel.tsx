@@ -29,7 +29,7 @@ const FrameCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
-              className="flex flex-col justify-center items-center h-full cursor-pointer"
+              className="flex flex-col justify-center items-center h-full hover:cursor-pointer hover:scale-105 duration-100"
               onClick={() =>
                 handleSwap(slide.price, slide.sustain, slide.profit)
               }
