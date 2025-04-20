@@ -19,9 +19,10 @@ import {
 interface SidebarTypes {
   budget: number;
   sustainStatus: number;
+  onBudgetChange: (newBudget: number) => void;
 }
 
-const Sidebar = ({ budget, sustainStatus }: SidebarTypes) => {
+const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStar, setSelectedStar] = useState<number | null>(null);
 
@@ -37,6 +38,7 @@ const Sidebar = ({ budget, sustainStatus }: SidebarTypes) => {
 
   const handleFavor = () => {
     console.log(`Favor called for star ${selectedStar}`);
+    onBudgetChange(budget + 50);
     handleCloseModal();
   };
 
