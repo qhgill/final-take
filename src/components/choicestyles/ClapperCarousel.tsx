@@ -40,7 +40,7 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         setApi={setApi}
         className="w-[40vw]"
       >
-        <CarouselContent className="h-[35vh]">
+        <CarouselContent className="h-[50vh]">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -50,7 +50,7 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-25 px-60 text-white">
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-45 px-50 text-white">
                   <p className="text-bold text-5xl">{slide.title}</p>
                   <p className="text-2xl">{slide.description}</p>
                   <p className="text-2xl">${formatPrice(slide.price)}</p>

@@ -20,7 +20,7 @@ interface PromptTypes {
 const clapperInitial = [
   {
     id: 1,
-    title: "Action / Sci-Fi s",
+    title: "Action / Sci-Fi",
     description: "Explosive, thrilling, and full of big moments.",
     price: 0,
     sustain: 0,
@@ -44,7 +44,7 @@ const Prompt = ({
   setMovieName,
 }: PromptTypes) => {
   return (
-    <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
+    <div className="flex flex-col w-[70vw] max-h-[100vh] justify-center gap-y-10 items-center">
       {month > 3 && (
         <>
           <p className="text-4xl font-bold">MONTH: {month - 2}</p>
