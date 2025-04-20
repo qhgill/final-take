@@ -22,7 +22,9 @@ const TicketSelect = ({ choices, handleSwap }: ChoiceTypes) => {
               {slide.title}
             </p>
             <p className="text-sm sm:text-2xl ">{slide.description}</p>
-            <p className="text-sm  sm:text-2xl ">${formatPrice(slide.price)}</p>
+            <p className="text-sm ml-4 sm:ml-0 sm:text-2xl ">
+              ${formatPrice(slide.price)}
+            </p>
             <Image
               src={ticketimg}
               alt="ticket"
