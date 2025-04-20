@@ -28,7 +28,6 @@ const options: Option[] = [
     title: "title",
     icon: placeholderimg,
     description: "i love cats",
-    speed: 20,
     placeholder: "meow",
   },
   {
@@ -36,7 +35,6 @@ const options: Option[] = [
     title: "another title",
     icon: placeholderimg,
     description: "i love cats too",
-    speed: 25,
     placeholder: "purr",
   },
 ];
@@ -48,33 +46,55 @@ const Home = () => {
 
   const handleSwap = () => {
     setVisible(false);
-    user.month = user.month + 1;
-    setTimeout(() => {
-      setSelectedOption((prev) =>
-        prev.month === options[0].month ? options[1] : options[0],
-      );
-      setPromptKey((prev) => prev + 1);
-      setVisible(true);
-    }, 800);
+
+    // this needs to be changed to a random + uses month so is scuffed
+    setSelectedOption((prev) =>
+      prev.month === options[0].month ? options[1] : options[0],
+    );
+    setPromptKey((prev) => prev + 1);
+    setVisible(true);
   };
 
   return (
-    <div className="w-screen relative h-screen max-h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
-      <Sidebar budget={user.budget} sustainStatus={user.sustStat} />
-      <div className="flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          {visible && (
-            <motion.div
-              key={promptKey}
-              initial={{ x: 300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Prompt options={selectedOption} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+    <div>
+      <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
+        <Sidebar budget={1} sustainStatus={1} />
+        <div className="flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            {visible && (
+              <motion.div
+                key={promptKey}
+                initial={{
+                  x: 300,
+                  opacity: 0,
+                  scale: 0.1,
+                  rotate: 45,
+                  filter: "blur(5px)",
+                }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  filter: "blur(0px)",
+                }}
+                exit={{
+                  x: -300,
+                  opacity: 0,
+                  scale: 0.1,
+                  rotate: -45,
+                  filter: "blur(5px)",
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.8, 0.55, 1],
+                }}
+              >
+                <Prompt options={selectedOption} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <button
           onClick={handleSwap}
           className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
