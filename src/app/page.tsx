@@ -56,6 +56,7 @@ const Home = () => {
     src: StaticImageData;
     alt: string;
   } | null>(null);
+  const [genre, setGenre] = useState("");
 
   useEffect(() => {
     if (user.month >= 1 && user.month <= 11) {
@@ -77,6 +78,14 @@ const Home = () => {
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
+
+    if (user.month == 3) {
+      if (profit == 2000000) {
+        setGenre("Action / Sci-Fi");
+      } else {
+        setGenre("Drama / Comedy");
+      }
+    }
 
     setCurrentEventDone((prev) => prev + 1);
 
@@ -179,6 +188,7 @@ const Home = () => {
               sustainStatus={user.sustStat}
               profit={user.profit}
               initialBudget={initialBudget}
+              genre={genre}
             />
             <motion.div
               initial={{ opacity: 0 }}
