@@ -21,7 +21,7 @@ const EndGame = ({
 
   const handlePlayAgain = () => {
     router.push("/");
-    window.location.reload(); // Force reload after navigation
+    window.location.reload();
   };
 
   const calculateFinalScore = (
