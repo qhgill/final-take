@@ -2,6 +2,7 @@ import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
 import TicketCarousel from "./choicestyles/TicketCarousel";
 import { Choice } from "../utils/options";
+import TicketSelect from "./choicestyles/TicketSelect";
 
 interface PromptTypes {
   options: Option;
@@ -24,14 +25,22 @@ const dummyset: Choice[] = [
     sustain: 1,
     profit: 1,
   },
-  {
-    id: 3,
-    title: "title3",
-    description: "an even better choice",
-    price: 1,
-    sustain: 1,
-    profit: 1,
-  },
+  // {
+  //   id: 3,
+  //   title: "title3",
+  //   description: "an even better choice",
+  //   price: 1,
+  //   sustain: 1,
+  //   profit: 1,
+  // },
+  // {
+  //   id: 4,
+  //   title: "title4",
+  //   description: "an even better choice",
+  //   price: 1,
+  //   sustain: 1,
+  //   profit: 1,
+  // },
 ];
 
 const Prompt = ({ options }: PromptTypes) => {
@@ -40,7 +49,8 @@ const Prompt = ({ options }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {options.month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
-      <TicketCarousel choices={dummyset} />
+      {/* <TicketCarousel choices={dummyset} /> */}
+      <TicketSelect choices={dummyset} />
       {options.placeholder}
     </div>
   );
