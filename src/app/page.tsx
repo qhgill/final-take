@@ -31,12 +31,13 @@ const Home = () => {
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
+  const [currentSustain, setCurrentSustain] = useState(user.sustStat);
 
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
     setCurrentBudget((prevBudget) => prevBudget - price);
-    user.sustStat -= sustain;
+    setCurrentSustain((prevSustain) => prevSustain - sustain);
     user.profit += profit;
 
     // this needs to be changed to a random + uses month so is scuffed
@@ -57,13 +58,18 @@ const Home = () => {
     setCurrentBudget(newBudget);
   };
 
+  const handleSustainChange = (newSustain: number) => {
+    setCurrentSustain(newSustain);
+  };
+
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
         <Sidebar
           budget={currentBudget}
-          sustainStatus={user.sustStat}
+          sustainStatus={currentSustain}
           onBudgetChange={handleBudgetChange}
+          onSustainChange={handleSustainChange}
         />
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
