@@ -2,7 +2,11 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 import { motion } from "framer-motion";
 
-const StartGame = () => {
+interface StartGameProps {
+  handleSwap: (price: number, sustain: number, profit: number) => void;
+}
+
+const StartGame = ({ handleSwap }: StartGameProps) => {
   return (
     <div className="flex flex-col justify-center gap-y-10 items-center w-full h-full">
       <motion.div
@@ -25,8 +29,13 @@ const StartGame = () => {
           width={450}
           height={200}
         />
-        <button className="text-4xl font-bold p-15 text-white">
-          START GAME
+        <button
+          onClick={() => {
+            handleSwap(0, 0, 0);
+          }}
+          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition mt-8 text-3xl"
+        >
+          Start Game
         </button>
       </motion.div>
     </div>

@@ -1,7 +1,5 @@
 import { Option } from "../utils/options";
-import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import AnimateText from "./AnimateText";
 import CustomSlider from "../components/choicestyles/CustomSlider";
 import TicketSelect from "./choicestyles/TicketSelect";
@@ -10,7 +8,7 @@ import FrameCarousel from "./choicestyles/FrameCarousel";
 import ClapperCarousel from "./choicestyles/ClapperCarousel";
 import BillboardCarousel from "./choicestyles/BillboardCarousel";
 import LightSelect from "./choicestyles/LightSelect";
-import logo from "@/public/logo.png";
+import StartGame from "./StartGame";
 
 interface PromptTypes {
   options: Option;
@@ -50,39 +48,7 @@ const Prompt = ({
 
   return (
     <div className="flex flex-col w-[70vw] max-h-[100vh] justify-center gap-y-10 items-center">
-      {month === 0 && (
-        <>
-          <div className="flex flex-col justify-center gap-y-10 items-center w-full h-full">
-            <motion.div
-              className="flex flex-col justify-center items-center"
-              initial={{ opacity: 0, y: 100, scale: 0.1 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 85,
-                damping: 8,
-                delay: 0.7,
-                duration: 1,
-              }}
-            >
-              <p className="text-7xl font-bold pb-9 ">THE FINAL TAKE</p>
-              <Image
-                src={logo}
-                alt="logo"
-                className="justify-center items-center"
-                width={450}
-                height={200}
-              />
-              <button
-                onClick={() => handleSwap(0, 0, 0)}
-                className="text-4xl font-bold p-15 text-white"
-              >
-                START GAME
-              </button>
-            </motion.div>
-          </div>
-        </>
-      )}
+      {month === 0 && <StartGame handleSwap={handleSwap} />}
       {month > 3 && (
         <>
           <p className="text-4xl font-bold">MONTH: {month - 2}</p>

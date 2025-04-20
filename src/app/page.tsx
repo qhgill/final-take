@@ -69,7 +69,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
-        {!isEnd && (
+        {!isEnd && user.month != 0 && (
           <Sidebar
             budget={currentBudget}
             sustainStatus={user.sustStat}
