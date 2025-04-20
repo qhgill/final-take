@@ -116,13 +116,21 @@ const Home = () => {
     <div>
       <div className="overflow-x-hidden w-screen relative h-screen flex flex-col sm:flex-row items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
         {currentFixedAsset && (
-          <div className="absolute bottom-0 right-0 opacity-75">
+          <motion.div
+            className="absolute bottom-0 right-0 opacity-75"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 0,
+              duration: 1,
+            }}
+          >
             <Image
               src={currentFixedAsset.src}
               alt={currentFixedAsset.alt}
               className="w-[150px] h-[150px] sm:w-[500px] sm:h-[500px]"
             />
-          </div>
+          </motion.div>
         )}
         {!isEnd && user.month != 0 && (
           <Sidebar
