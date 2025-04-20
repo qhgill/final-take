@@ -2,19 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Prompt from "../components/Prompt";
 import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
 import { productionOptions } from "../data/options";
-import EndGame from "../components/EndGame";
 import Image from "next/image";
 import curtain from "@/public/curtain.png";
 
 const usedOptions: Option[] = [];
 
 const user: User = {
-  month: 1,
+  month: 0,
   budget: 2000000,
   sustStat: 100,
   profit: 100,
@@ -61,6 +59,7 @@ const Home = () => {
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
+
   const handleBudgetChange = (newBudget: number) => {
     setCurrentBudget(newBudget);
     user.budget = newBudget;
@@ -84,7 +83,7 @@ const Home = () => {
               alt="curtain"
               className="h-screen absolute left-0 top-0"
             />
-            <EndGame movieName={movieName} />
+            {/* <StartGame/> */}
             <Image
               src={curtain}
               alt="curtain"
