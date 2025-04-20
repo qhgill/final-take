@@ -16,7 +16,7 @@ const AnimateText = ({ text, typeSpeed }: AnimateTextProps) => {
   }, [text]);
 
   return (
-    <div className="relative inline-block font-mono text-2xl">
+    <div className="relative inline-block font-mono text-3xl text-center w-10/12">
       <span className="invisible">{text}</span>
       <span className="absolute top-0 left-0">
         <TypeAnimation

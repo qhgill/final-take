@@ -51,9 +51,9 @@ const Prompt = ({
     <div className="flex flex-col w-[70vw] max-h-[100vh] justify-center gap-y-10 items-center">
       {month > 3 && (
         <>
-          <p className="text-4xl font-bold">MONTH: {month - 2}</p>
-          <p className="text-6xl font-extrabold">{options.title}</p>
-          <AnimateText text={options.description} typeSpeed={30} />
+          <p className="text-5xl font-bold">MONTH: {month - 2}</p>
+          <p className="text-8xl font-extrabold">{options.title}</p>
+          <AnimateText text={options.description} typeSpeed={23} />
           {options.selectionView === 1 && (
             <TicketCarousel choices={options.answers} handleSwap={handleSwap} />
           )}
@@ -96,12 +96,12 @@ const Prompt = ({
             text={
               "Hello! It’s time to step into your role as Director for your movie! Please enter your movie name!"
             }
-            typeSpeed={30}
+            typeSpeed={23}
           />
           <input
             type="text"
             placeholder="Enter your movie name"
-            className="border-4 px-4 py-2 rounded-lg w-full max-w-[400px] text-center"
+            className="border-4 px-4 py-2 rounded-lg w-full max-w-[400px] text-center text-3xl"
             onChange={(e) => {
               setLocalMovieName(e.target.value);
               setMovieName(e.target.value);
@@ -116,7 +116,7 @@ const Prompt = ({
               }
             }}
             disabled={localMovieName.trim() === ""}
-            className={`border px-4 py-2 rounded-lg transition 
+            className={`border px-4 py-2 rounded-lg transition text-2xl
     ${
       localMovieName.trim() === ""
         ? "bg-gray-300 text-gray-500 cursor-not-allowed"
@@ -135,7 +135,7 @@ const Prompt = ({
             text={
               "Each month, you’ll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
             }
-            typeSpeed={30}
+            typeSpeed={23}
           />
           <CustomSlider updateBudget={updateBudget} />
 
@@ -143,7 +143,7 @@ const Prompt = ({
             onClick={() => {
               handleSwap(0, 0, 0);
             }}
-            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-2xl"
           >
             Finalize Budget
           </button>
@@ -157,7 +157,7 @@ const Prompt = ({
             text={
               "Now that you have your budget, what kind of movie do you want to make?"
             }
-            typeSpeed={30}
+            typeSpeed={23}
           />
           <ClapperCarousel choices={clapperInitial} handleSwap={handleSwap} />
         </div>
