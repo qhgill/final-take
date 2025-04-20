@@ -21,7 +21,7 @@ const StartGame = ({ handleSwap }: StartGameProps) => {
           duration: 1,
         }}
       >
-        <p className="text-7xl font-bold pb-9 ">THE FINAL TAKE</p>
+        <p className="text-4xl sm:text-7xl font-bold pb-9 ">THE FINAL TAKE</p>
         <Image
           src={logo}
           alt="logo"

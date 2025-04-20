@@ -38,9 +38,9 @@ const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
           loop: false,
         }}
         setApi={setApi}
-        className="w-[40vw]"
+        className="w-[70vw] sm:w-[40vw]"
       >
-        <CarouselContent className="flex h-[35vh] basis-0.5">
+        <CarouselContent className="flex h-[25vh] sm:h-[35vh] basis-0.5">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -50,10 +50,14 @@ const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-55 text-black">
-                  <p className="text-bold text-5xl">{slide.title}</p>
-                  <p className="text-2xl">{slide.description}</p>
-                  <p className="text-2xl">${formatPrice(slide.price)}</p>
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-10 sm:px-55 text-black">
+                  <p className="text-bold text-2xl sm:text-5xl">
+                    {slide.title}
+                  </p>
+                  <p className="text-base sm:text-2xl">{slide.description}</p>
+                  <p className="text-base sm:text-2xl">
+                    ${formatPrice(slide.price)}
+                  </p>
                   <Image
                     src={billboardimg}
                     alt="ticket"
@@ -64,8 +68,8 @@ const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="scale-300 cursor-pointer" />
-        <CarouselNext className="scale-300 cursor-pointer" />
+        <CarouselPrevious className="scale-120 sm:scale-300 cursor-pointer" />
+        <CarouselNext className="scale-120 sm:scale-300 cursor-pointer" />
       </Carousel>
       <div className="flex justify-center space-x-4 py-4">
         {choices.map((_, index) => (

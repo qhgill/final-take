@@ -38,9 +38,9 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
           loop: false,
         }}
         setApi={setApi}
-        className="w-[40vw]"
+        className="w-[67vw] sm:w-[40vw]"
       >
-        <CarouselContent className="h-[50vh]">
+        <CarouselContent className="h-[30vh] sm:h-[50vh]">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -50,10 +50,12 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-45 px-50 text-white">
-                  <p className="text-bold text-5xl">{slide.title}</p>
-                  <p className="text-2xl">{slide.description}</p>
-                  <p className="text-2xl">${formatPrice(slide.price)}</p>
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-22 pl-4 sm:pl-0 sm:pt-45 px-10 sm:px-50 text-white">
+                  <p className="text-bold text-lg sm:text-5xl">{slide.title}</p>
+                  <p className="text-sm sm:text-2xl">{slide.description}</p>
+                  <p className="text-sm sm:text-2xl">
+                    ${formatPrice(slide.price)}
+                  </p>
                   <Image
                     src={clapperimg}
                     alt="ticket"
@@ -64,8 +66,8 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="scale-300 cursor-pointer" />
-        <CarouselNext className="scale-300 cursor-pointer" />
+        <CarouselPrevious className="scale-120 sm:scale-300 cursor-pointer" />
+        <CarouselNext className="scale-120 sm:scale-300 cursor-pointer" />
       </Carousel>
       <div className="flex justify-center space-x-4 py-4">
         {choices.map((_, index) => (

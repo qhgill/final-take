@@ -73,7 +73,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-screen relative h-screen flex items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
+      <div className="w-screen relative h-screen flex flex-col sm:flex-row items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
         {!isEnd && user.month != 0 && (
           <Sidebar
             budget={currentBudget}
@@ -95,7 +95,7 @@ const Home = () => {
               <Image
                 src={curtain}
                 alt="curtain"
-                className="h-screen absolute left-0 top-0"
+                className="hidden sm:flex h-screen absolute left-0 top-0"
               />
             </motion.div>
 
@@ -117,7 +117,7 @@ const Home = () => {
               <Image
                 src={curtain}
                 alt="curtain"
-                className="h-screen absolute right-0 top-0"
+                className="hidden sm:flex h-screen absolute right-0 top-0"
               />
             </motion.div>
           </div>

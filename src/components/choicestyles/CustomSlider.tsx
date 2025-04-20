@@ -17,7 +17,7 @@ const CustomSlider = ({ updateBudget }: SliderProps) => {
 
   return (
     <div className="flex flex-col w-full px-4 max-w-2xl ">
-      <div className="text-2xl flex flex-row gap-5 text-[#D45555]">
+      <div className="text-xl sm:text-2xl items-center flex flex-row gap-5 text-[#D45555]">
         <p>$2M</p>
         <Slider
           value={value}
@@ -45,7 +45,7 @@ const CustomSlider = ({ updateBudget }: SliderProps) => {
         <p>$20M</p>
       </div>
 
-      <p className="mt-4 text-2xl font-medium text-[#D45555]">
+      <p className="mt-4 text-xl sm:text-2xl font-medium text-[#D45555]">
         Current: ${(value / 1000000).toFixed(1)}M
       </p>
     </div>
