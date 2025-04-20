@@ -16,9 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`flex min-h-screen w-screen flex-col overflow-x-hidden bg-hsa-tan-100 ${gelasio.className} ${cormorant.className}`}
-      >
+      <body className={`${gelasio.className} ${cormorant.className}`}>
         {children}
       </body>
     </html>
