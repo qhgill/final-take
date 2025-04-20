@@ -31,14 +31,13 @@ const TicketCarousel = ({ choices }: ChoiceTypes) => {
               className="flex flex-col justify-center items-center h-full "
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start  w-full h-full py-15 px-30">
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-30">
                   <p className="text-bold text-5xl text-white">{slide.title}</p>
                   <p className="text-2xl text-white">{slide.description}</p>
                   <p className="text-2xl text-white">${slide.price}</p>
                   <Image
                     src={ticketimg}
                     alt="ticket"
-                    // objectFit=""
                     className="absolute inset-0 -z-1 h-full w-full object-contain"
                   />
                 </CardContent>
