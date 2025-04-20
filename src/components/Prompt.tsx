@@ -5,7 +5,7 @@ import TicketCarousel from "./choicestyles/TicketCarousel";
 interface PromptTypes {
   options: Option;
   month: number;
-  handleSwap: () => void;
+  handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
 const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
@@ -14,15 +14,17 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
-      <TicketCarousel choices={options.answers} />
+      <TicketCarousel choices={options.answers} handleSwap={handleSwap} />
       {options.placeholder}
 
-      <button
-        onClick={handleSwap}
-        className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
-      >
-        Switch Option
-      </button>
+      {options.selectionView != 1 && (
+        <button
+          onClick={() => handleSwap}
+          className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+        >
+          Switch Option
+        </button>
+      )}
     </div>
   );
 };
