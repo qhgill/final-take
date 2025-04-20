@@ -22,7 +22,6 @@ const user: User = {
   used: usedOptions,
 };
 
-
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<Option>(
     productionOptions[0],
