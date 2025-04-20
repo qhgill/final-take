@@ -37,6 +37,8 @@ const fixedAssets: FixedAssets = {
   7: { src: directorChair, alt: "Director's Chair" },
   8: { src: directorChair, alt: "Director's Chair" },
   9: { src: directorChair, alt: "Director's Chair" },
+  10: { src: directorChair, alt: "Director's Chair" },
+  11: { src: directorChair, alt: "Director's Chair" },
 };
 
 const Home = () => {
@@ -56,7 +58,7 @@ const Home = () => {
   } | null>(null);
 
   useEffect(() => {
-    if (user.month >= 1 && user.month <= 9) {
+    if (user.month >= 1 && user.month <= 11) {
       setCurrentFixedAsset(fixedAssets[user.month] || null);
     } else {
       setCurrentFixedAsset(null);
