@@ -26,19 +26,22 @@ interface SidebarTypes {
   budget: number;
   sustainStatus: number;
   onBudgetChange: (newBudget: number) => void;
+  currentMonth: number;
 }
 
-const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
+const Sidebar = ({ budget, sustainStatus, onBudgetChange, currentMonth }: SidebarTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStar, setSelectedStar] = useState<number | null>(null);
   const [usedStars, setUsedStars] = useState<boolean[]>([false, false, false]);
 
   const handleStarClick = (starIndex: number) => {
+    if (currentMonth <= 2) return;
     if (!usedStars[starIndex]) {
       setSelectedStar(starIndex);
       setIsModalOpen(true);
     }
   };
+  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
