@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
-import billboardimg from "@/public/funScreen.png";
+import billboardimg from "@/public/marquee.png";
 import { formatPrice } from "@//utils/options";
 
 interface ChoiceTypes {

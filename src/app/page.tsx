@@ -49,8 +49,8 @@ const Home = () => {
     user.profit += profit;
 
     user.month += 1;
-    if (currentEventDone - 2 >= productionOptions.length) {
-      // if (currentEventDone + 2 >= 2) {
+    // if (currentEventDone - 2 >= productionOptions.length) {
+    if (currentEventDone + 2 >= 2) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);
@@ -68,7 +68,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
+      <div className="w-screen relative h-screen flex items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
         {!isEnd && (
           <Sidebar
             budget={currentBudget}
@@ -78,7 +78,7 @@ const Home = () => {
           />
         )}
         {isEnd && (
-          <div className="flex-row">
+          <div className="">
             <Image
               src={curtain}
               alt="curtain"
