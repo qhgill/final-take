@@ -47,7 +47,7 @@ const Prompt = ({
   const [localMovieName, setLocalMovieName] = useState("");
 
   return (
-    <div className="flex flex-col w-[70vw] max-h-screen justify-center gap-y-10 items-center">
+    <div className="flex flex-col w-[70vw] max-h-screen justify-center gap-y-2 sm:gap-y-10 items-center">
       {month === 0 && <StartGame handleSwap={handleSwap} />}
       {month > 3 && (
         <>
@@ -93,8 +93,8 @@ const Prompt = ({
       )}
       {month === 1 && (
         <div className="flex flex-col w-[70vw] justify-center gap-y-2 sm:gap-y-10 items-center">
-          <p className="text-3xl sm:text-5xl font-bold text-white">MONTH {1}</p>
-          <p className="text-2xl sm:text-8xl font-extrabold">
+          <p className="text-2xl sm:text-5xl font-bold text-white">MONTH {1}</p>
+          <p className="text-xl sm:text-8xl font-extrabold">
             Select Movie Name
           </p>
           <AnimateText
@@ -134,9 +134,9 @@ const Prompt = ({
       )}
 
       {month === 2 && (
-        <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
-          <p className="text-3xl sm:text-4xl font-bold text-white">MONTH {1}</p>
-          <p className="text-5xl sm:text-8xl font-extrabold">Select Budget</p>
+        <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-2 sm:gap-y-10 items-center">
+          <p className="text-xl sm:text-4xl font-bold text-white">MONTH {1}</p>
+          <p className="text-2xl sm:text-8xl font-extrabold">Select Budget</p>
           <AnimateText
             text={
               "Each month, you'll make a key decision in the filmmaking pipeline. Every choice shapes your film and your environmental impact. Let’s set up your initial budget."
@@ -157,7 +157,7 @@ const Prompt = ({
       )}
 
       {month === 3 && (
-        <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
+        <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-2 sm:gap-y-10 items-center">
           <p className="text-3xl sm:text-4xl font-bold text-white">MONTH {1}</p>
           <p className="text-4xl sm:text-8xl font-extrabold">Select Genre</p>
           <AnimateText
