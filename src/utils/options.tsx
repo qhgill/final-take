@@ -1,5 +1,3 @@
-import { StaticImageData } from "next/image";
-
 export interface Option {
   title: string;
   description: string;
