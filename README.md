@@ -8,6 +8,12 @@
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
+[Deployment Link](https://qhgill.github.io/final-take/)
+<br/>
+[Devpost](https://devpost.com/software/the-final-take?ref_content=user-portfolio&ref_feature=in_progress)
+<br/>
+[Figma](https://www.figma.com/design/SwhvB05sxX9Obd8qbtN9iI/The-Final-Take?node-id=52-78&t=Hqlk7OC6PGqDdgE2-0)
+
 ## Node.js
 
 Final Take runs on Node.js Version 20.10.0 and higher. Please ensure you have Node.js installed via the [official website](https://nodejs.org/en).
@@ -15,6 +21,14 @@ Final Take runs on Node.js Version 20.10.0 and higher. Please ensure you have No
 ## Next.js
 
 This project is built using [Next.js](https://nextjs.org), a React framework. Next.js is automatically installed when you install all dependencies for this project.
+
+## Environment Variables
+ 
+ The following environment variables are required and must be stored in an `.env` file:
+ 
+ ```env
+OPENROUTER_API_KEY=
+ ```
 
 ## Commands
 
