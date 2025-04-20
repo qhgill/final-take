@@ -24,13 +24,14 @@ const initialUser: User = {
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<Option>(
-    productionOptions[0],
+    productionOptions[0]
   );
   const [currentEventDone, setCurrentEventDone] = useState(0);
   const [visible, setVisible] = useState(true);
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [user, setUser] = useState<User>(initialUser);
+  const [currentBudget, setCurrentBudget] = useState(user.budget);
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
@@ -47,7 +48,6 @@ const Home = () => {
       profit: prevUser.profit + profit,
       month: prevUser.month + 1,
     }));
-
 
     console.log("Current Budget:", currentBudget);
     setCurrentEventDone(currentEventDone + 1);

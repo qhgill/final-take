@@ -66,11 +66,11 @@ const Sidebar = ({
   const getEarthImage = (sustainStatus: number) => {
     if (sustainStatus > 80) {
       return earth1Happy;
-    } else if (sustainStatus >= 60) {
+    } else if (sustainStatus > 60) {
       return earth2Dull;
-    } else if (sustainStatus >= 40) {
+    } else if (sustainStatus > 40) {
       return earth3Gray;
-    } else if (sustainStatus >= 20) {
+    } else if (sustainStatus > 20) {
       return earth4Worried;
     } else {
       return earth5Sad;
