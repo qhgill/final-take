@@ -50,10 +50,14 @@ const ClapperCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-22 pl-4 sm:pl-0 sm:pt-45 px-10 sm:px-50 text-white">
-                  <p className="text-bold text-lg sm:text-5xl">{slide.title}</p>
-                  <p className="text-sm sm:text-2xl">{slide.description}</p>
-                  <p className="text-sm sm:text-2xl">
+                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full pt-15 pl-4 sm:pl-5 sm:pt-45 px-10 sm:px-50 text-white">
+                  <p className="pl-5 text-bold text-sm sm:text-4xl">
+                    {slide.title}
+                  </p>
+                  <p className="pl-5 text-xs sm:text-2xl">
+                    {slide.description}
+                  </p>
+                  <p className="pl-5 text-xs sm:text-2xl">
                     ${formatPrice(slide.price)}
                   </p>
                   <Image

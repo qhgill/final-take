@@ -50,14 +50,14 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full sm:pr-0 pr-14 h-full py-8 sm:py-15 sm:pl-0 pl-4 sm:px-30">
+                <CardContent className="text-pretty relative flex flex-col text-2xl font-bold justify-center items-start w-full sm:pr-0 pr-14 h-full py-8 sm:py-15 sm:pl-0 pl-15 sm:px-40">
                   <p className="text-bold text-xl sm:text-5xl text-white">
                     {slide.title}
                   </p>
-                  <p className="text-sm sm:text-2xl text-white">
+                  <p className=" text-xs sm:text-2xl text-white">
                     {slide.description}
                   </p>
-                  <p className="text-sm sm:text-2xl text-white">
+                  <p className="text-xs sm:text-2xl text-white">
                     {formatPrice(slide.price)}
                   </p>
                   <Image
