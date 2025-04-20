@@ -31,8 +31,12 @@ const Home = () => {
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
 
-  const handleSwap = () => {
+  const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
+
+    user.budget -= price;
+    user.sustStat -= sustain;
+    user.profit += profit;
 
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);

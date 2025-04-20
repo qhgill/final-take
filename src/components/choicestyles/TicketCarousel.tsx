@@ -13,14 +13,15 @@ import ticketimg from "@/public/ticket.png";
 
 interface ChoiceTypes {
   choices: Choice[];
+  handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
-const TicketCarousel = ({ choices }: ChoiceTypes) => {
+const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   return (
     <div>
       <Carousel
         opts={{
-          loop: true,
+          loop: false,
         }}
         className="w-[40vw]"
       >
@@ -28,7 +29,10 @@ const TicketCarousel = ({ choices }: ChoiceTypes) => {
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
-              className="flex flex-col justify-center items-center h-full "
+              className="flex flex-col justify-center items-center h-full cursor-pointer"
+              onClick={() =>
+                handleSwap(slide.price, slide.sustain, slide.profit)
+              }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
                 <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-30">
