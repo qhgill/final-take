@@ -1,6 +1,6 @@
 import { Option } from "../utils/options";
 import AnimateText from "./AnimateText";
-import TicketCarousel from "./choicestyles/TicketCarousel";
+import FrameCarousel from "./choicestyles/FrameCarousel";
 
 interface PromptTypes {
   options: Option;
@@ -14,7 +14,7 @@ const Prompt = ({ options, month, handleSwap }: PromptTypes) => {
       <p className="text-4xl font-bold">MONTH: {month}</p>
       <p className="text-6xl font-extrabold">{options.title}</p>
       <AnimateText text={options.description} typeSpeed={30} />
-      <TicketCarousel choices={options.answers} handleSwap={handleSwap} />
+      <FrameCarousel choices={options.answers} handleSwap={handleSwap} />
       {options.placeholder}
 
       {options.selectionView != 1 && (
