@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Prompt from "../components/Prompt";
 import { Option, User } from "../utils/options";
@@ -9,6 +10,8 @@ import { productionOptions } from "../data/options";
 import Image from "next/image";
 import curtain from "@/public/curtain.png";
 import EndGame from "../components/EndGame";
+import office from "@/public/office.png";
+import directorChair from "@/public/directorChair.png";
 
 const usedOptions: Option[] = [];
 
@@ -19,6 +22,23 @@ const user: User = {
   profit: 100,
   production: productionOptions,
   used: usedOptions,
+};
+type FixedAssets = {
+  [month: number]: { src: StaticImageData; alt: string };
+};
+
+const fixedAssets: FixedAssets = {
+  1: { src: office, alt: "Office" },
+  2: { src: office, alt: "Office" },
+  3: { src: office, alt: "Office" },
+  4: { src: office, alt: "Office" },
+  5: { src: office, alt: "Office" },
+  6: { src: directorChair, alt: "Director's Chair" },
+  7: { src: directorChair, alt: "Director's Chair" },
+  8: { src: directorChair, alt: "Director's Chair" },
+  9: { src: directorChair, alt: "Director's Chair" },
+  10: { src: directorChair, alt: "Director's Chair" },
+  11: { src: directorChair, alt: "Director's Chair" },
 };
 
 const Home = () => {
@@ -32,6 +52,18 @@ const Home = () => {
   const [currentBudget, setCurrentBudget] = useState(user.budget);
   const [movieName, setMovieName] = useState("");
   const [initialBudget, setInitialBudget] = useState(user.budget);
+  const [currentFixedAsset, setCurrentFixedAsset] = useState<{
+    src: StaticImageData;
+    alt: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (user.month >= 1 && user.month <= 11) {
+      setCurrentFixedAsset(fixedAssets[user.month] || null);
+    } else {
+      setCurrentFixedAsset(null);
+    }
+  }, [user.month]);
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
@@ -73,7 +105,24 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-screen relative h-screen flex flex-col sm:flex-row items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
+      <div className="overflow-x-hidden w-screen relative h-screen flex flex-col sm:flex-row items-center justify-center bg-[radial-gradient(circle,_#5B575759_2%,_#4D4D4D88_47%,_#343333E6_100%)]">
+        {currentFixedAsset && (
+          <motion.div
+            className="absolute bottom-0 right-0 opacity-75"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 0,
+              duration: 1,
+            }}
+          >
+            <Image
+              src={currentFixedAsset.src}
+              alt={currentFixedAsset.alt}
+              className="w-[150px] h-[150px] sm:w-[500px] sm:h-[500px]"
+            />
+          </motion.div>
+        )}
         {!isEnd && user.month != 0 && (
           <Sidebar
             budget={currentBudget}

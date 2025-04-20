@@ -50,12 +50,14 @@ const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
               }
             >
               <Card className="bg-transparent w-full border-0 flex flex-col items-center justify-center h-full">
-                <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-10 sm:px-55 text-black">
-                  <p className="text-bold text-2xl sm:text-5xl">
+                <CardContent className=" text-pretty relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-10 sm:px-55 text-black">
+                  <p className="pl-5 text-bold text-xl sm:text-5xl">
                     {slide.title}
                   </p>
-                  <p className="text-base sm:text-2xl">{slide.description}</p>
-                  <p className="text-base sm:text-2xl">
+                  <p className="pl-5 text-sm sm:text-2xl">
+                    {slide.description}
+                  </p>
+                  <p className="pl-5 text-sm sm:text-2xl">
                     ${formatPrice(slide.price)}
                   </p>
                   <Image

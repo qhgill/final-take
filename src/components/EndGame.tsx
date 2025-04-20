@@ -58,19 +58,19 @@ const EndGame = ({
           height={300}
         />
         <div className="absolute flex flex-col items-center text-center">
-          <p className="text-2xl sm:text-5xl text-center font-bold mb-4 overflow-clip w-5/6 sm:w-1/2">
+          <p className="text-2xl sm:text-5xl text-center font-bold w-5/6 sm:w-1/2">
             Congratulations on {movieName}!
           </p>
-          <p className="text-lg sm:text-4xl font-bold">
+          <p className="text-base sm:text-4xl font-bold">
             Remaining Budget: ${formatPrice(budget)}
           </p>
-          <p className="text-lg sm:text-4xl font-bold">
+          <p className="text-base sm:text-4xl font-bold">
             Sustainability: {sustainStatus}
           </p>
-          <p className="text-lg sm:text-4xl font-bold">
+          <p className="text-base sm:text-4xl font-bold">
             Profit: ${formatPrice(profit)}
           </p>
-          <p className="text-lg sm:text-4xl font-bold mb-4">
+          <p className="text-base sm:text-4xl font-bold mb-4">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}
           </p>
