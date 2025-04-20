@@ -1,5 +1,7 @@
 import { Option } from "../utils/options";
 
+import { useState } from "react";
+
 import AnimateText from "./AnimateText";
 import CustomSlider from "../components/choicestyles/CustomSlider";
 import TicketSelect from "./choicestyles/TicketSelect";
@@ -43,6 +45,8 @@ const Prompt = ({
   updateBudget,
   setMovieName,
 }: PromptTypes) => {
+  const [localMovieName, setLocalMovieName] = useState("");
+
   return (
     <div className="flex flex-col w-[70vw] max-h-[90vh] justify-center gap-y-10 items-center">
       {month > 3 && (
@@ -98,14 +102,26 @@ const Prompt = ({
             type="text"
             placeholder="Enter your movie name"
             className="border-4 px-4 py-2 rounded-lg w-full max-w-[400px] text-center"
-            onChange={(e) => setMovieName(e.target.value)}
+            onChange={(e) => {
+              setLocalMovieName(e.target.value);
+              setMovieName(e.target.value);
+            }}
+            value={localMovieName}
           />
 
           <button
             onClick={() => {
-              handleSwap(0, 0, 0);
+              if (localMovieName.trim() !== "") {
+                handleSwap(0, 0, 0);
+              }
             }}
-            className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+            disabled={localMovieName.trim() === ""}
+            className={`border px-4 py-2 rounded-lg transition 
+    ${
+      localMovieName.trim() === ""
+        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+        : "bg-gray-200 hover:bg-gray-300 cursor-pointer "
+    }`}
           >
             Finalize Movie Name
           </button>

@@ -46,7 +46,6 @@ const Home = () => {
     user.sustStat -= sustain;
     user.profit += profit;
 
-    // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
     user.month += 1;
     if (currentEventDone >= productionOptions.length) {
