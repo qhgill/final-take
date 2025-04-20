@@ -1,12 +1,9 @@
 import { Option } from "../utils/options";
-import placeholderimg from "@/public/placeholder.png";
 
 export const productionOptions: Option[] = [
   {
     title: "the best option",
-    icon: placeholderimg,
     description: "yea what the title says",
-    placeholder: "placeholder",
     selectionView: 1,
     answers: [
       {
@@ -40,9 +37,7 @@ export const productionOptions: Option[] = [
 export const marketingOptions: Option[] = [
   {
     title: "the best option",
-    icon: placeholderimg,
     description: "yea what the title says",
-    placeholder: "placeholder",
     selectionView: 1,
     answers: [
       {
