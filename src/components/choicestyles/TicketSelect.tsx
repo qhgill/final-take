@@ -1,5 +1,4 @@
 "use client";
-import { Card, CardContent } from "@/components/ui/card";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
 import ticketimg from "@/public/ticket.png";
