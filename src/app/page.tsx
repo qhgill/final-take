@@ -14,7 +14,7 @@ const usedOptions: Option[] = [];
 
 const initialUser: User = {
   month: 1,
-  budget: 100,
+  budget: 2000000,
   sustStat: 100,
   profit: 100,
   production: productionOptions,
@@ -32,6 +32,11 @@ const Home = () => {
   const [isEnd, setIsEnd] = useState(false);
   const [user, setUser] = useState<User>(initialUser);
 
+  const updateBudget = (newBudget: number) => {
+    setCurrentBudget(newBudget);
+    user.budget = newBudget;
+  };
+
   const handleSwap = (price: number, sustain: number, profit: number) => {
     setVisible(false);
 
@@ -43,6 +48,8 @@ const Home = () => {
       month: prevUser.month + 1,
     }));
 
+
+    console.log("Current Budget:", currentBudget);
     setCurrentEventDone(currentEventDone + 1);
     if (currentEventDone >= productionOptions.length - 1) {
       setIsEnd(true);
@@ -51,7 +58,7 @@ const Home = () => {
       return;
     }
 
-    setSelectedOption(productionOptions[user.month - 1]);
+    setSelectedOption(productionOptions[user.month - 2]);
     setPromptKey((prev) => prev + 1);
     setVisible(true);
   };
@@ -114,6 +121,7 @@ const Home = () => {
                     options={selectedOption}
                     month={user.month}
                     handleSwap={handleSwap}
+                    updateBudget={updateBudget}
                   />
                 )}
               </motion.div>
