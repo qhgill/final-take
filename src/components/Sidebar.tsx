@@ -85,8 +85,6 @@ const Sidebar = ({
     <>
       <div className="flex sm:hidden flex-col items-center justify-between h-screen max-h-screen w-full top-0 inxet-x-0 absolute">
         <div className="pt-5 flex gap-x-7 justify-between items-end ">
-          {/* <Image src={logo} alt="logo" className="object-contain size-20" /> */}
-
           <div className="flex flex-col justify-between items-center">
             <p className="text-start text-3xl">${formatPrice(budget)}</p>
             <p className="text-start text-2xl font-extrabold">Budget</p>
