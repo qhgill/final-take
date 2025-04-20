@@ -77,7 +77,7 @@ const TicketCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
         {choices.map((_, index) => (
           <button
             key={index}
-            className={`h-5 w-5 rounded-full cursor-pointer ${current === index ? "bg-gray-900" : "bg-gray-400"}`}
+            className={`h-5 w-5 rounded-full cursor-pointer ${current === index ? "bg-black" : "bg-white"}`}
             onClick={() => api?.scrollTo(index)}
           />
         ))}

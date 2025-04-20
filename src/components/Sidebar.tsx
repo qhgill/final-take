@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import logo from "@/public/logo.png";
 import grayStar from "@/public/star/grayStar.png";
 import yellowStar from "@/public/star/yellowStar.png";
 import Question from "../components/Question";
@@ -86,7 +87,9 @@ const Sidebar = ({
       <div className="flex sm:hidden flex-col items-center justify-between h-screen max-h-screen w-full top-0 inxet-x-0 absolute">
         <div className="pt-5 flex gap-x-7 justify-between items-end ">
           <div className="flex flex-col justify-between items-center">
-            <p className="text-start text-3xl">${formatPrice(budget)}</p>
+            <p className="text-start text-3xl text-white pb-3">
+              ${formatPrice(budget)}
+            </p>
             <p className="text-start text-2xl font-extrabold">Budget</p>
           </div>
           <div className="flex flex-col items-center">
@@ -97,7 +100,9 @@ const Sidebar = ({
             />
             <p className="text-start text-2xl font-extrabold">Sustainability</p>
           </div>
-          <Question />
+          <div className="py-5">
+            <Question />
+          </div>
         </div>
         <div className="flex flex-col">
           <p className="text-center text-2xl font-extrabold">Favors</p>
@@ -140,17 +145,11 @@ const Sidebar = ({
 
       <div className="hidden sm:flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
         <div className="flex flex-col gap-4">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            style={{ originX: 0.5, originY: 0.5 }}
-            className="flex justify-center items-center mr-20"
-          >
-            <Image
-              src={earthImage}
-              alt="Earth Status"
-              className="object-contain m-2 size-40"
-            />
-          </motion.div>
+          <Image
+            src={logo}
+            alt="logo"
+            className="object-contain size-25 mt-5"
+          />
           <Question />
           <p className="text-start text-black text-5xl font-extrabold">
             Budget
@@ -163,11 +162,17 @@ const Sidebar = ({
           <p className="text-start text-5xl text-black font-extrabold gap-4">
             Sustainability
           </p>
-          <Image
-            src={earthImage}
-            alt="Earth Status"
-            className=" object-contain size-40"
-          />
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            style={{ originX: 0.5, originY: 0.5 }}
+            className="flex justify-center items-center mr-20"
+          >
+            <Image
+              src={earthImage}
+              alt="Earth Status"
+              className="object-contain m-2 size-40"
+            />
+          </motion.div>
         </div>
 
         <div className="flex flex-col  justify-start gap-y-5 py-10">

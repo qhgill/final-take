@@ -2,6 +2,7 @@ import Image from "next/image";
 import marquee from "@/public/marquee.png";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { formatPrice } from "../utils/options";
 interface EndGameProps {
   movieName: string;
   budget: number;
@@ -30,8 +31,7 @@ const EndGame = ({
     profit: number,
     initialBudget: number,
   ) => {
-    const score =
-      ((budget + sustainStatus) * profit) / (initialBudget / 1000000) / 100;
+    const score = ((budget + profit) / initialBudget) * sustainStatus;
     return Math.round(score);
   };
 
@@ -62,12 +62,14 @@ const EndGame = ({
             Congratulations on {movieName}!
           </p>
           <p className="text-lg sm:text-4xl font-bold">
-            Remaining Budget: {budget}
+            Remaining Budget: ${formatPrice(budget)}
           </p>
           <p className="text-lg sm:text-4xl font-bold">
             Sustainability: {sustainStatus}
           </p>
-          <p className="text-lg sm:text-4xl font-bold">Profit: {profit}</p>
+          <p className="text-lg sm:text-4xl font-bold">
+            Profit: ${formatPrice(profit)}
+          </p>
           <p className="text-lg sm:text-4xl font-bold mb-4">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}
