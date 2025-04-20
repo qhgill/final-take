@@ -15,10 +15,10 @@ const TicketSelect = ({ choices, handleSwap }: ChoiceTypes) => {
       {choices.map((slide: Choice) => (
         <div key={slide.id}>
           <div
-            className="relative text-2xl font-bold text-white px-20 py-12 hover:cursor-pointer hover:scale-105 duration-100"
+            className="relative text-2xl font-bold text-white pl-10 pr-40 py-12 hover:cursor-pointer hover:scale-105 duration-100 h-[50vh]"
             onClick={() => handleSwap(slide.price, slide.sustain, slide.profit)}
           >
-            <p className="text-bold text-5xl">{slide.title}</p>
+            <p className="text-bold text-5xl pt-40">{slide.title}</p>
             <p className="text-2xl ">{slide.description}</p>
             <p className="text-2xl ">${formatPrice(slide.price)}</p>
             <Image
