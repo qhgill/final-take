@@ -26,14 +26,21 @@ interface SidebarTypes {
   budget: number;
   sustainStatus: number;
   onBudgetChange: (newBudget: number) => void;
+  currentMonth: number;
 }
 
-const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
+const Sidebar = ({
+  budget,
+  sustainStatus,
+  onBudgetChange,
+  currentMonth,
+}: SidebarTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStar, setSelectedStar] = useState<number | null>(null);
   const [usedStars, setUsedStars] = useState<boolean[]>([false, false, false]);
 
   const handleStarClick = (starIndex: number) => {
+    if (currentMonth <= 2) return;
     if (!usedStars[starIndex]) {
       setSelectedStar(starIndex);
       setIsModalOpen(true);
@@ -95,7 +102,11 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
             key={starIndex}
             src={usedStars[starIndex] ? grayStar : yellowStar}
             alt={usedStars[starIndex] ? "Used Star" : "Available Star"}
-            className={`size-20 hover:scale-80 duration-100 cursor-pointer`}
+            className={`size-20 duration-100 ${
+              currentMonth <= 2 || usedStars[starIndex]
+                ? "cursor-not-allowed opacity-50"
+                : "hover:scale-80 cursor-pointer"
+            }`}
             onClick={() => handleStarClick(starIndex)}
           />
         ))}

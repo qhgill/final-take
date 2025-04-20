@@ -91,6 +91,7 @@ const Home = () => {
             />
           </div>
         )}
+
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
             {visible && (
