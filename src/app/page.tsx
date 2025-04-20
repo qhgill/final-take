@@ -29,7 +29,7 @@ const Home = () => {
   const [promptKey, setPromptKey] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [currentBudget, setCurrentBudget] = useState(user.budget);
-  const [movieName, setMovieName] = useState("");
+  const [setMovieName] = useState("");
 
   const updateBudget = (newBudget: number) => {
     setCurrentBudget(newBudget);
