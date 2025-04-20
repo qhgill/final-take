@@ -10,7 +10,7 @@ import Sidebar from "../components/Sidebar";
 import { marketingOptions } from "../data/options";
 import { productionOptions } from "../data/options";
 
-let usedOptions: Option[] = [];
+const usedOptions: Option[] = [];
 
 let user: User = {
   month: 1,
@@ -48,7 +48,7 @@ const Home = () => {
 
   const handleSwap = () => {
     setVisible(false);
-
+    user.month = user.month + 1;
     setTimeout(() => {
       setSelectedOption((prev) =>
         prev.month === options[0].month ? options[1] : options[0],
