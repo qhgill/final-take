@@ -5,8 +5,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import Prompt from "../components/Prompt";
 import placeholderimg from "@/public/placeholder.png";
-import Option from "../utils/options";
+import { Option, User } from "../utils/options";
 import Sidebar from "../components/Sidebar";
+import { marketingOptions } from "../data/options";
+import { productionOptions } from "../data/options";
+
+const usedOptions: Option[] = [];
+
+const user: User = {
+  month: 1,
+  budget: 100,
+  sustStat: 100,
+  profit: 100,
+  production: productionOptions,
+  marketing: marketingOptions,
+  used: usedOptions,
+};
 
 const options: Option[] = [
   {
@@ -44,7 +58,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-screen relative h-screen flex items-center justify-center bg-radial from-gray-100 to-gray-400">
-        <Sidebar budget={1} sustainStatus={1} />
+        <Sidebar budget={user.budget} sustainStatus={user.sustStat} />
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">
             {visible && (
