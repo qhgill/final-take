@@ -7,6 +7,7 @@ import TicketCarousel from "./choicestyles/TicketCarousel";
 import FrameCarousel from "./choicestyles/FrameCarousel";
 import ClapperCarousel from "./choicestyles/ClapperCarousel";
 import BillboardCarousel from "./choicestyles/BillboardCarousel";
+import LightSelect from "./choicestyles/LightSelect";
 
 interface PromptTypes {
   options: Option;
@@ -44,8 +45,11 @@ const Prompt = ({ options, month, handleSwap, updateBudget }: PromptTypes) => {
           {options.selectionView === 5 && (
             <TicketSelect choices={options.answers} handleSwap={handleSwap} />
           )}
+          {options.selectionView === 6 && (
+            <LightSelect choices={options.answers} handleSwap={handleSwap} />
+          )}
 
-          {options.selectionView >= 6 && (
+          {options.selectionView > 6 && (
             <button
               onClick={() => handleSwap(0, 0, 0)}
               className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
