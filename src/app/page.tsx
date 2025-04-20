@@ -24,7 +24,7 @@ const user: User = {
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<Option>(
-    productionOptions[0],
+    productionOptions[0]
   );
   const [currentEventDone, setCurrentEventDone] = useState(0);
   const [visible, setVisible] = useState(true);
