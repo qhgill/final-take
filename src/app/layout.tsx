@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Gelasio } from "next/font/google";
+import { Cormorant } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const gelasio = Gelasio({ subsets: ["latin"] });
+const cormorant = Cormorant({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`flex min-h-screen w-screen flex-col overflow-x-hidden bg-hsa-tan-100 ${gelasio.className} ${cormorant.className}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
