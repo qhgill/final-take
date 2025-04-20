@@ -84,7 +84,15 @@ const Sidebar = ({
 
   return (
     <>
-      <div className="flex sm:hidden flex-col items-center justify-between h-screen max-h-screen w-full top-0 inxet-x-0 absolute">
+      <motion.div
+        className="flex sm:hidden flex-col items-center justify-between h-screen max-h-screen w-full top-0 inxet-x-0 absolute"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 0,
+          duration: 1,
+        }}
+      >
         <div className="pt-5 flex gap-x-7 justify-between items-end ">
           <div className="flex flex-col justify-between items-center">
             <p className="text-start text-3xl text-white pb-3">
@@ -141,9 +149,17 @@ const Sidebar = ({
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-      </div>
+      </motion.div>
 
-      <div className="hidden sm:flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0">
+      <motion.div
+        className="hidden sm:flex flex-col items-start justify-between h-screen max-h-screen w-[20vw] mx-4 absolute left-0 inset-y-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 0,
+          duration: 1,
+        }}
+      >
         <div className="flex flex-col gap-4">
           <Image
             src={logo}
@@ -211,7 +227,7 @@ const Sidebar = ({
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-      </div>
+      </motion.div>
     </>
   );
 };
