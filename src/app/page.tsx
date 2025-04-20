@@ -12,7 +12,7 @@ import { productionOptions } from "../data/options";
 
 const usedOptions: Option[] = [];
 
-let user: User = {
+const user: User = {
   month: 1,
   budget: 100,
   sustStat: 100,
