@@ -8,6 +8,13 @@ interface ChoiceTypes {
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
+const formatPrice = (num: number): string => {
+  if (num >= 1_000_000)
+    return `${(num / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (num >= 1_000) return `${(num / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+  return num.toString();
+};
+
 const LightSelect = ({ choices, handleSwap }: ChoiceTypes) => {
   return (
     <div className="grid grid-cols-2 h-[40vh]">
@@ -22,7 +29,7 @@ const LightSelect = ({ choices, handleSwap }: ChoiceTypes) => {
           >
             <p className="text-bold text-5xl">{slide.title}</p>
             <p className="text-2xl ">{slide.description}</p>
-            <p className="text-2xl ">${slide.price}</p>
+            <p className="text-2xl ">${formatPrice(slide.price)}</p>
           </div>
           <Image
             src={spotlightimg}

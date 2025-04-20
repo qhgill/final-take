@@ -71,6 +71,13 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
     }
   };
 
+  const formatPrice = (num: number): string => {
+    if (num >= 1_000_000)
+      return `${(num / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+    if (num >= 1_000) return `${(num / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+    return num.toString();
+  };
+
   const earthImage = getEarthImage(sustainStatus);
 
   return (
@@ -80,7 +87,7 @@ const Sidebar = ({ budget, sustainStatus, onBudgetChange }: SidebarTypes) => {
         <Question />
         <p className="text-start text-3xl">
           Budget
-          <br />${budget}
+          <br />${formatPrice(budget)}
         </p>
         <p className="text-start text-3xl">
           Sustainability

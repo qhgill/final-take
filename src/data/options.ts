@@ -36,7 +36,7 @@ export const productionOptions: Option[] = [
         id: 1,
         title: "Hire well-known actors",
         description: "Famous talent brings attention, but at a cost.",
-        price: 2000000,
+        price: 200000,
         sustain: 15,
         profit: 3,
       },

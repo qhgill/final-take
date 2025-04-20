@@ -16,6 +16,13 @@ interface ChoiceTypes {
   handleSwap: (price: number, sustain: number, profit: number) => void;
 }
 
+const formatPrice = (num: number): string => {
+  if (num >= 1_000_000)
+    return `${(num / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (num >= 1_000) return `${(num / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+  return num.toString();
+};
+
 const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
   return (
     <div>
@@ -38,7 +45,7 @@ const BillboardCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
                 <CardContent className="relative flex flex-col text-2xl font-bold justify-center items-start w-full h-full py-15 px-55 text-black">
                   <p className="text-bold text-5xl">{slide.title}</p>
                   <p className="text-2xl">{slide.description}</p>
-                  <p className="text-2xl">${slide.price}</p>
+                  <p className="text-2xl">${formatPrice(slide.price)}</p>
                   <Image
                     src={billboardimg}
                     alt="ticket"
