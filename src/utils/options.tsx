@@ -2,7 +2,7 @@ export interface Option {
   title: string;
   description: string;
   answers: Choice[];
-  selectionView: number; // 1 for carousel
+  selectionView: number; // 1 for ticketcarousel, 2 for framecarouel, 3 for clapper carouel, 4 for billboard carousel, 5 for 2 tickets, 6 for 2 lights
 }
 
 export interface User {
