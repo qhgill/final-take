@@ -9,13 +9,13 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { MessageCircleQuestion } from "lucide-react";
+import { FileQuestion } from "lucide-react";
 
 const Quesiton = () => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="cursor-pointer text-black flex items-center justify-center hover:scale-110 duration-100">
-        <MessageCircleQuestion className="size-10" />
+      <AlertDialogTrigger>
+        <FileQuestion className="size-15 cursor-pointer text-black hover:scale-95 duration-100" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

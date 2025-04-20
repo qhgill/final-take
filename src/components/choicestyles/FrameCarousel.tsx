@@ -1,11 +1,13 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Choice } from "@//utils/options";
 import Image from "next/image";
@@ -18,15 +20,27 @@ interface ChoiceTypes {
 }
 
 const FrameCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
   return (
     <div>
       <Carousel
         opts={{
           loop: false,
         }}
+        setApi={setApi}
         className="w-[40vw]"
       >
-        <CarouselContent className="h-[30vh]">
+        <CarouselContent className="h-[30vh] basis-0.5">
           {choices.map((slide: Choice) => (
             <CarouselItem
               key={slide.id}
@@ -50,9 +64,18 @@ const FrameCarousel = ({ choices, handleSwap }: ChoiceTypes) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="scale-300 cursor-pointer" />
+        <CarouselNext className="scale-300 cursor-pointer" />
       </Carousel>
+      <div className="flex justify-center space-x-4 py-4">
+        {choices.map((_, index) => (
+          <button
+            key={index}
+            className={`h-5 w-5 cursor-pointer rounded-full ${current === index ? "bg-gray-900" : "bg-gray-400"}`}
+            onClick={() => api?.scrollTo(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
