@@ -49,7 +49,7 @@ const Home = () => {
     // this needs to be changed to a random + uses month so is scuffed
     setCurrentEventDone(currentEventDone + 1);
     user.month += 1;
-    if (currentEventDone >= productionOptions.length - 1) {
+    if (currentEventDone >= productionOptions.length) {
       setIsEnd(true);
       setVisible(true);
       setPromptKey((prev) => prev + 1);

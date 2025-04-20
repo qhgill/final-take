@@ -62,7 +62,7 @@ export const productionOptions: Option[] = [
     title: "Build Your World",
     description:
       "Create the environment where your story unfolds. Where will you film your movie?",
-    selectionView: 5,
+    selectionView: 2,
     answers: [
       {
         id: 1,
@@ -181,7 +181,7 @@ export const productionOptions: Option[] = [
     title: "Market the Magic",
     description:
       "Make sure the world knows about your movie! How will you get your film noticed?",
-    selectionView: 1,
+    selectionView: 4,
     answers: [
       {
         id: 1,
