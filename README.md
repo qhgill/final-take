@@ -55,7 +55,7 @@ This project is built using [Next.js](https://nextjs.org), a React framework. Ne
 The following environment variables are required and must be stored in an `.env` file:
 
 ```env
-OPENROUTER_API_KEY=
+NEXT_PUBLIC_OPENROUTER_API_KEY=
 ```
 
 ## Commands
