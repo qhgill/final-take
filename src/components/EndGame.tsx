@@ -3,6 +3,8 @@ import marquee from "@/public/marquee.png";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { formatPrice } from "../utils/options";
+import { useRouter } from "next/navigation";
 
 import {
   AlertDialog,
@@ -33,7 +35,12 @@ const EndGame = ({
   genre,
 }: EndGameProps) => {
   const [description, setDescription] = useState<string>("");
+  const router = useRouter();
 
+  const handlePlayAgain = () => {
+    router.push("/");
+    window.location.reload();
+  };
   const calculateFinalScore = (
     budget: number,
     sustainStatus: number,
@@ -102,25 +109,27 @@ const EndGame = ({
           width={800}
           height={300}
         />
-        <div className="absolute text-center">
-          <p className="text-2xl sm:text-5xl font-bold mb-4">
+        <div className="absolute inset-y-[36vh] text-center flex flex-col items-center">
+          <p className="text-xl sm:text-5xl font-bold text-center w-full">
             Congratulations on {movieName}!
           </p>
-          <p className="text-lg sm:text-4xl font-bold">
-            Remaining Budget: {budget}
+          <p className="text-base sm:text-4xl font-bold">
+            Remaining Budget: ${formatPrice(budget)}
           </p>
-          <p className="text-lg sm:text-4xl font-bold">
+          <p className="text-base sm:text-4xl font-bold">
             Sustainability: {sustainStatus}
           </p>
-          <p className="text-lg sm:text-4xl font-bold">Profit: {profit}</p>
-          <p className="text-lg sm:text-4xl font-bold mb-4">
+          <p className="text-base sm:text-4xl font-bold">
+            Profit: ${formatPrice(profit)}
+          </p>
+          <p className="text-base sm:text-4xl font-bold">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}
           </p>
 
           <AlertDialog>
             <AlertDialogTrigger>
-              <div className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-lg sm:text-2xl">
+              <div className="cursor-pointer text-black border px-2 sm:px-4 py-0 sm:py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-lg sm:text-2xl">
                 Movie Plot
               </div>
             </AlertDialogTrigger>
@@ -138,12 +147,12 @@ const EndGame = ({
           </AlertDialog>
         </div>
 
-        <Link
-          href={"/"}
+        <button
+          onClick={handlePlayAgain}
           className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition mt-8 text-3xl"
         >
           Play Again
-        </Link>
+        </button>
       </motion.div>
     </div>
   );
