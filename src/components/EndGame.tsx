@@ -22,6 +22,7 @@ interface EndGameProps {
   sustainStatus: number;
   profit: number;
   initialBudget: number;
+  genre: string;
 }
 
 const EndGame = ({
@@ -30,6 +31,7 @@ const EndGame = ({
   sustainStatus,
   profit,
   initialBudget,
+  genre,
 }: EndGameProps) => {
   const [description, setDescription] = useState<string>("");
   const router = useRouter();
@@ -45,8 +47,44 @@ const EndGame = ({
     initialBudget: number,
   ) => {
     const score = ((budget + profit) / initialBudget) * sustainStatus;
+
     return Math.round(score);
   };
+
+  useEffect(() => {
+    const fetchDescription = async () => {
+      try {
+        const res = await fetch("/api/generate-description", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            movieName,
+            budget,
+            sustainStatus,
+            profit,
+            genre,
+          }),
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          console.error("API error:", text);
+          setDescription("Failed to generate description.");
+          return;
+        }
+
+        const data = await res.json();
+        setDescription(data.description);
+      } catch (error) {
+        console.error("Unexpected error:", error);
+        setDescription("Something went wrong.");
+      }
+    };
+
+    fetchDescription();
+  }, [movieName, budget, sustainStatus, profit]);
 
   return (
     <div className="flex flex-col justify-center gap-y-10 items-center w-full px-2 h-full">
@@ -118,4 +156,5 @@ const EndGame = ({
     </div>
   );
 };
+
 export default EndGame;
