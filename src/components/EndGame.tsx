@@ -2,7 +2,6 @@ import Image from "next/image";
 import marquee from "@/public/marquee.png";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { formatPrice } from "../utils/options";
 import { useRouter } from "next/navigation";
 
