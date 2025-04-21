@@ -79,7 +79,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-
+    env:
+      OPENROUTER_API_KEY: ${{secrets.OPENROUTER_API_KEY}}
   # Deployment job
   deploy:
     environment:

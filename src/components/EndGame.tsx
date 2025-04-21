@@ -96,7 +96,7 @@ const EndGame = ({
           type: "spring",
           stiffness: 85,
           damping: 8,
-          delay: 0.7,
+          delay: 0.8,
           duration: 1,
         }}
       >
@@ -108,7 +108,15 @@ const EndGame = ({
           width={800}
           height={300}
         />
-        <div className="absolute inset-y-[36vh] text-center flex flex-col items-center">
+        <motion.div
+          className="absolute inset-y-[36vh] text-center flex flex-col items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: 2.4,
+            duration: 1,
+          }}
+        >
           <p className="text-xl sm:text-5xl font-bold text-center w-full">
             Congratulations on {movieName}!
           </p>
@@ -144,7 +152,7 @@ const EndGame = ({
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-        </div>
+        </motion.div>
 
         <button
           onClick={handlePlayAgain}
