@@ -1,8 +1,21 @@
 import Image from "next/image";
 import marquee from "@/public/marquee.png";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { formatPrice } from "../utils/options";
+import { useRouter } from "next/navigation";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 interface EndGameProps {
   movieName: string;
   budget: number;
@@ -18,13 +31,13 @@ const EndGame = ({
   profit,
   initialBudget,
 }: EndGameProps) => {
+  const [description, setDescription] = useState<string>("");
   const router = useRouter();
 
   const handlePlayAgain = () => {
     router.push("/");
     window.location.reload();
   };
-
   const calculateFinalScore = (
     budget: number,
     sustainStatus: number,
@@ -57,8 +70,8 @@ const EndGame = ({
           width={800}
           height={300}
         />
-        <div className="absolute flex flex-col items-center text-center">
-          <p className="text-2xl sm:text-5xl text-center font-bold w-5/6 sm:w-1/2">
+        <div className="absolute inset-y-[36vh] text-center flex flex-col items-center">
+          <p className="text-xl sm:text-5xl font-bold text-center w-full">
             Congratulations on {movieName}!
           </p>
           <p className="text-base sm:text-4xl font-bold">
@@ -70,10 +83,29 @@ const EndGame = ({
           <p className="text-base sm:text-4xl font-bold">
             Profit: ${formatPrice(profit)}
           </p>
-          <p className="text-base sm:text-4xl font-bold mb-4">
+          <p className="text-base sm:text-4xl font-bold">
             Final Score:{" "}
             {calculateFinalScore(budget, sustainStatus, profit, initialBudget)}
           </p>
+
+          <AlertDialog>
+            <AlertDialogTrigger>
+              <div className="cursor-pointer text-black border px-2 sm:px-4 py-0 sm:py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition text-lg sm:text-2xl">
+                Movie Plot
+              </div>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>{movieName} Plot</AlertDialogTitle>
+                <AlertDialogDescription>{description}</AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogAction className="text-xl cursor-pointer">
+                  Close
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
 
         <button
