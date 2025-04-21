@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`, // Set in .env
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_API_KEY}`, // Set in .env
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
