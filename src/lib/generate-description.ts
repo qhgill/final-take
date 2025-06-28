@@ -1,6 +1,16 @@
-export async function POST(req: Request) {
-  const { movieName, budget, sustainStatus, profit, genre } = await req.json();
-
+export async function generateMovieSynopsis({
+  movieName,
+  budget,
+  sustainStatus,
+  profit,
+  genre,
+}: {
+  movieName: string;
+  budget: number;
+  sustainStatus: number;
+  profit: number;
+  genre: string;
+}) {
   const prompt = `Write a detailed, concise movie synopsis for a ${genre} film called "${movieName}" that was created with ${budget}. It has a sustainability score of ${sustainStatus}. The lower the score, the less sustainable it is. It also gained ${profit} in profit at the box office. Word limit 100.`;
 
   const response = await fetch(
@@ -8,11 +18,11 @@ export async function POST(req: Request) {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_API_KEY}`, // Set in .env
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo", // or "openai/gpt-4", or "anthropic/claude-3-opus"
+        model: "mistralai/mixtral-8x7b-instruct",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.8,
       }),
@@ -21,8 +31,5 @@ export async function POST(req: Request) {
 
   const data = await response.json();
 
-  const description =
-    data?.choices?.[0]?.message?.content || "Something went wrong.";
-
-  return Response.json({ description });
+  return data?.choices?.[0]?.message?.content || "Something went wrong.";
 }
