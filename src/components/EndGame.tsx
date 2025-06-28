@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { formatPrice } from "../utils/options";
 import { useRouter } from "next/navigation";
+import { generateMovieSynopsis } from "@/lib/generate-description";
 
 import {
   AlertDialog,
@@ -54,29 +55,14 @@ const EndGame = ({
   useEffect(() => {
     const fetchDescription = async () => {
       try {
-        const res = await fetch("/api/generate-description", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            movieName,
-            budget,
-            sustainStatus,
-            profit,
-            genre,
-          }),
+        const desc = await generateMovieSynopsis({
+          movieName,
+          budget,
+          sustainStatus,
+          profit,
+          genre,
         });
-
-        if (!res.ok) {
-          const text = await res.text();
-          console.error("API error:", text);
-          setDescription("Failed to generate description.");
-          return;
-        }
-
-        const data = await res.json();
-        setDescription(data.description);
+        setDescription(desc);
       } catch (error) {
         console.error("Unexpected error:", error);
         setDescription("Something went wrong.");
@@ -84,7 +70,7 @@ const EndGame = ({
     };
 
     fetchDescription();
-  }, [movieName, budget, sustainStatus, profit]);
+  }, [movieName, budget, sustainStatus, profit, genre]);
 
   return (
     <div className="flex flex-col justify-center gap-y-10 items-center w-full px-2 h-full">
